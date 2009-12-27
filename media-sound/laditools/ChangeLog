@@ -3,7 +3,8 @@
 # $Header: $
 
   27 Dec 2008; Marc-Olivier Barre <marco@marcochapeau.org>
-  laditols-9999.ebuild now uses the git repository
+  laditools-9999.ebuild now uses the git repository
+  no more pyxml dependency
 
   15 Dec 2008; Thomas Kuther <gimpel@sonnenkinder.org>
   +laditools-1.0_rc1.ebuild:

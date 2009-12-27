@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit distutils subversion
+inherit distutils git
 
 DESCRIPTION="LADITools is a set of tools to improve desktop integration and user workflow of Linux audio systems"
 HOMEPAGE="http://www.marcochapeau.org/software/laditools"
@@ -18,15 +18,9 @@ IUSE=""
 
 RDEPEND="dev-lang/python
 	dev-python/pygtk
-	dev-python/pyxml
 	|| ( >=media-sound/jack-audio-connection-kit-0.109.2-r2[dbus]
 		media-sound/jackdmp[dbus] )
 	x11-libs/vte[python]"
 DEPEND="dev-lang/python"
 
 DOCS="README"
-
-#src_unpack() {
-#	subversion_src_unpack
-#	#epatch "${FILESDIR}/${P}-no_extra_docs.patch"
-#}
