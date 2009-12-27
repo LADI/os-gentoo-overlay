@@ -2,6 +2,9 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  28 Dec 2008; Marc-Olivier Barre <marco@marcochapeau.org>
+  laditools-9999.ebuild now depends on dev-python/pyyaml
+
   27 Dec 2008; Marc-Olivier Barre <marco@marcochapeau.org>
   laditools-9999.ebuild now uses the git repository
   no more pyxml dependency

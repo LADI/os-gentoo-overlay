@@ -18,6 +18,7 @@ IUSE=""
 
 RDEPEND="dev-lang/python
 	dev-python/pygtk
+	dev-python/pyyaml
 	|| ( >=media-sound/jack-audio-connection-kit-0.109.2-r2[dbus]
 		media-sound/jackdmp[dbus] )
 	x11-libs/vte[python]"
