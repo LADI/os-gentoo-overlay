@@ -9,7 +9,7 @@ inherit distutils subversion
 DESCRIPTION="LADITools is a set of tools to improve desktop integration and user workflow of Linux audio systems"
 HOMEPAGE="http://www.marcochapeau.org/software/laditools"
 
-ESVN_REPO_URI="svn://svn.marcochapeau.org/laditools/trunk"
+EGIT_REPO_URI="git://git.marcochapeau.org/laditools.git"
 
 LICENSE=""
 SLOT="0"
