@@ -1,0 +1,6 @@
+# ChangeLog for media-sound/laditools
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  28 Dec 2008; Marc-Olivier Barre <marco@marcochapeau.org>
+  ladish-9999.ebuild: add some more precise dependencies to make gladish work

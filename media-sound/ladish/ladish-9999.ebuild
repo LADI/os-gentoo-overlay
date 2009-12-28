@@ -16,8 +16,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-sound/jack-audio-connection-kit[dbus]
-	x11-libs/flowcanvas
-	sys-apps/dbus
+	=x11-libs/flowcanvas-9999
+	>dev-libs/glib-2.20.3
+	>x11-libs/gtk+-2.12.1
+	>gnome-base/libglade-2.6.2
+	>dev-libs/dbus-glib-0.74
 	dev-lang/python"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
