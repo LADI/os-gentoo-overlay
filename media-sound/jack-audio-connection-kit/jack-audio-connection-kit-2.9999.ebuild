@@ -7,7 +7,8 @@ inherit flag-o-matic git
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
 HOMEPAGE="http://www.grame.fr/~letz/jackdmp.html"
 
-EGIT_REPO_URI="git://"
+EGIT_REPO_URI="git://repo.or.cz/jack2.git"
+EGIT_BRANCH="ladi"
 
 LICENSE="GPL-2"
 SLOT="0"
