@@ -25,7 +25,6 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	ls -l
 	epatch "${FILESDIR}/fixwarnings.patch"
 }
 
