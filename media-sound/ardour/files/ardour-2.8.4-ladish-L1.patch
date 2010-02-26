@@ -1,0 +1,51 @@
+commit 69c58a8c1668fa586208021a345f36cc5c8d674f
+Author: Nedko Arnaudov <nedko@arnaudov.name>
+Date:   Tue Jan 12 02:32:39 2010 +0200
+
+    ladish level 1 support
+
+diff --git a/gtk2_ardour/main.cc b/gtk2_ardour/main.cc
+index 98f06d1..44a5921 100644
+--- a/gtk2_ardour/main.cc
++++ b/gtk2_ardour/main.cc
+@@ -286,6 +286,27 @@ sigpipe_handler (int sig)
+ 	}
+ }
+ 
++static bool ladish_L1_save_request = false;
++
++static gboolean
++maybe_ladish_L1_save (void* /* ignored */)
++{
++	if (ladish_L1_save_request) {
++		cout << "ladish L1 save request" << endl;
++		ladish_L1_save_request = false;
++		ARDOUR_UI::instance()->save_state("");
++	}
++
++	return true;
++}
++
++static void
++sigusr1_handler (int sig)
++{
++	//cout << "SIGUSR1 received!" << endl;
++	ladish_L1_save_request = true;
++}
++
+ #ifdef HAVE_LV2
+ void close_external_ui_windows();
+ #endif
+@@ -379,6 +400,12 @@ int main (int argc, char* argv[])
+ 		cerr << _("Cannot install SIGPIPE error handler") << endl;
+ 	}
+ 
++	g_timeout_add (300, maybe_ladish_L1_save, 0);
++
++	if (::signal (SIGUSR1, sigusr1_handler)) {
++		cerr << _("Cannot install SIGUSR1 error handler") << endl;
++	}
++
+         try { 
+ 		ui = new ARDOUR_UI (&argc, &argv);
+ 	} catch (failed_constructor& err) {
