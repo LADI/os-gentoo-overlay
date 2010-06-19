@@ -54,9 +54,7 @@ pkg_nofetch() {
 	einfo
 }
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
+src_prepare() {
 	epatch "${FILESDIR}/ardour-2.8.8-ladish-L1.patch"
 }
 

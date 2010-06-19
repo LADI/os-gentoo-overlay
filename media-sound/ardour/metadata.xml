@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>no-herd</herd>
+  <maintainer>
+    <email>nedko@arnadov.name</email>
+    <name>Nedko Arnaudov</name>
+  </maintainer>
+  <maintainer>
+    <email>marco@marcochapeau.org</email>
+    <name>Marc-Olivier Barre</name>
+  </maintainer>
+  <longdescription>
+Ardour is a full-featured, free and open-source hard disk recorder and digital audio workstation program suitable for professional use. It features unlimited audio tracks and buses, non-destructive, non-linear editing with unlimited undo, and anything-to-anywhere signal routing. It supports standard file formats, such as BWF, WAV, WAV64, AIFF and CAF, and it can use LADSPA, LV2, VST and AudioUnit plugin formats.
+
+Ardour uses the Jack Audio Connection Kit (JACK) to interface with the computer's sound card, as well as with other audio applications running on the same system. 
+  </longdescription>
+  <use>
+    <flag name="lv2">Enables the LV2 plugin support</flag>
+  </use>
+</pkgmetadata>

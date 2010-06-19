@@ -2,40 +2,39 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit flag-o-matic git
+inherit multilib
 
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
-HOMEPAGE="http://www.grame.fr/~letz/jackdmp.html"
-
-EGIT_REPO_URI="git://repo.or.cz/jack2.git"
-EGIT_BRANCH="ladi"
-EGIT_COMMIT="ladi"
+HOMEPAGE="http://www.jackaudio.org"
+SRC_URI="http://www.grame.fr/~letz/jack-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="classic doc debug freebob dbus mixed"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc debug freebob dbus"
 
-RDEPEND="
-	>=media-libs/alsa-lib-0.9.1
+RDEPEND=">=media-libs/alsa-lib-0.9.1
 	freebob? ( sys-libs/libfreebob )
 	dbus? ( sys-apps/dbus )"
+
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	doc? ( app-doc/doxygen )"
+
+S="${WORKDIR}/jack-${PV}"
 
 pkg_setup() {
 	# sandbox-1.6 breaks, on amd64 at least
 
 	# paludis...
 	if has_version "=sys-apps/sandbox-1.6" && [[ -n $(echo `ps -fp $$`|grep paludis) ]]; then
-		eerror "The compile will hang with =sandbox-1.6. You are using paludis,"
-		eerror "so you'll have to downgrade sandbox."
+		eerror "The compile will hang with =sandbox-1.6. Either downgrade to sandbox-1.4, or use"
+		eerror "PALUDIS_DO_NOTHING_SANDBOXY=1 paludis -i ${PN}"
 		die
 	fi
 
 	# portage
-	if use amd64 && hasq "sandbox" ${FEATURES} && ! hasq "-sandbox" ${FEATURES} && has_version "=sys-apps/sandbox-1.6"; then
+	if hasq "sandbox" ${FEATURES} && ! hasq "-sandbox" ${FEATURES} && has_version "=sys-apps/sandbox-1.6"; then
 		eerror "The compile will hang with =sandbox-1.6. Please use:"
 		echo
 		eerror "FEATURES=\"-sandbox\" emerge ${PN}"
@@ -47,13 +46,8 @@ pkg_setup() {
 
 src_compile() {
 	local myconf="--prefix=/usr --destdir=${D}"
-	if use classic && use dbus ; then
-		myconf="${myconf} --classic"
-	fi
-	if use mixed && use amd64 ; then
-		myconf="${myconf} --mixed"
-	fi
 	use dbus && myconf="${myconf} --dbus"
+	!use dbus && myconf="${myconf} --classic"
 	use debug && myconf="${myconf} -d debug"
 	use doc && myconf="${myconf} --doxygen"
 

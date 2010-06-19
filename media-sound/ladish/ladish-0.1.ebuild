@@ -24,7 +24,9 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+}
+
+src_prepare() {
 	epatch "${FILESDIR}/fixwarnings.patch"
 }
 
