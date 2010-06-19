@@ -1,0 +1,7 @@
+# ChangeLog for media-sound/dino
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  18 Jan 2010; Nedko Arnaudov <nedko@arnaudov.name>
+  This is needed for to make repoman shut up (changelog.ebuildadded)
+

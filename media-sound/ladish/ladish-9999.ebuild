@@ -13,7 +13,7 @@ EGIT_REPO_URI="git://repo.or.cz/ladish.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="lash"
 
 RDEPEND="media-sound/jack-audio-connection-kit[dbus]
 	=x11-libs/flowcanvas-9999
@@ -31,7 +31,11 @@ src_unpack() {
 }
 
 src_compile() {
-	./waf configure --prefix=/usr || die "failed to configure"
+	local myconf="--prefix=/usr --destdir=${D}"
+	use lash && myconf="${myconf} --enable-liblash"
+
+	einfo "Running \"./waf configure ${myconf}\" ..."
+	./waf configure ${myconf} || die "waf configure failed"
 	./waf || die "failed to build"
 }
 
