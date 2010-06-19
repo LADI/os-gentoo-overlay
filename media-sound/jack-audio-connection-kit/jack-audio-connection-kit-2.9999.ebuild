@@ -16,12 +16,13 @@ SLOT="0"
 KEYWORDS=""
 IUSE="classic doc debug freebob dbus mixed"
 
-RDEPEND="dev-util/pkgconfig
-	>=media-libs/alsa-lib-0.9.1"
-DEPEND="${RDEPEND}
+RDEPEND="
+	>=media-libs/alsa-lib-0.9.1
 	freebob? ( sys-libs/libfreebob )
-	doc? ( app-doc/doxygen )
 	dbus? ( sys-apps/dbus )"
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig
+	doc? ( app-doc/doxygen )"
 
 pkg_setup() {
 	# sandbox-1.6 breaks, on amd64 at least
@@ -47,10 +48,10 @@ pkg_setup() {
 src_compile() {
 	local myconf="--prefix=/usr --destdir=${D}"
 	if use classic && use dbus ; then
-	    myconf="${myconf} --classic"
+		myconf="${myconf} --classic"
 	fi
 	if use mixed && use amd64 ; then
-	    myconf="${myconf} --mixed"
+		myconf="${myconf} --mixed"
 	fi
 	use dbus && myconf="${myconf} --dbus"
 	use debug && myconf="${myconf} -d debug"
