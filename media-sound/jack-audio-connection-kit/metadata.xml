@@ -19,5 +19,8 @@ JACK was designed from the ground up for professional audio work, and its design
     <flag name="classic">Force enable standard JACK (jackd) even if D-Bus JACK (jackdbus) is enabled too</flag>
     <flag name="mixed">Build with 32/64 bits mixed mode</flag>
     <flag name="freebob">Build with FireWire (FreeBob) support</flag>
+    <flag name="netjack">Build with netjack support</flag>
+    <flag name="cpudetection">Enabling cpudetection (dynsimd)</flag>
+    <flag name="celt">Build netjack with celt support</flag>
   </use>
 </pkgmetadata>

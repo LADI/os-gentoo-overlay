@@ -4,7 +4,7 @@
 
 inherit flag-o-matic eutils multilib git linux-info autotools
 
-RESTRICT="nostrip mirror"
+RESTRICT="strip mirror"
 DESCRIPTION="A low-latency audio server"
 HOMEPAGE="http://www.jackaudio.org"
 
@@ -31,10 +31,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	netjack? ( dev-util/scons )
 	"
-
-#pkg_setup() {
-#	append-ldflags $(no-as-needed)
-#}
 
 src_unpack() {
 	git_src_unpack
