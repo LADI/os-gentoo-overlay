@@ -46,7 +46,7 @@ pkg_setup() {
 }
 
 src_compile() {
-	local myconf="--prefix=/usr --destdir=${D}"
+	local myconf="--prefix=/usr --destdir=${D} --alsa"
 	if use classic && use dbus ; then
 		myconf="${myconf} --classic"
 	fi
