@@ -14,15 +14,17 @@ EGIT_COMMIT="ladi"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="classic doc debug freebob dbus mixed"
+IUSE="alsa classic doc debug freebob dbus ieee1394 mixed"
 
 RDEPEND="
-	>=media-libs/alsa-lib-0.9.1
-	freebob? ( sys-libs/libfreebob )
-	dbus? ( sys-apps/dbus )"
+	alsa? ( >=media-libs/alsa-lib-0.9.1 )
+	freebob? ( sys-libs/libfreebob !media-libs/libffado )
+	doc? ( app-doc/doxygen )
+	dbus? ( sys-apps/dbus )
+	ieee1394? ( media-libs/libffado !sys-libs/libfreebob )
+	media-libs/libsamplerate"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig
-	doc? ( app-doc/doxygen )"
+	dev-util/pkgconfig"
 
 pkg_setup() {
 	# sandbox-1.6 breaks, on amd64 at least
@@ -46,7 +48,8 @@ pkg_setup() {
 }
 
 src_compile() {
-	local myconf="--prefix=/usr --destdir=${D} --alsa"
+	local myconf="--prefix=/usr --destdir=${D}"
+	use alsa && myconf="${myconf} --alsa"
 	if use classic && use dbus ; then
 		myconf="${myconf} --classic"
 	fi
@@ -56,6 +59,8 @@ src_compile() {
 	use dbus && myconf="${myconf} --dbus"
 	use debug && myconf="${myconf} -d debug"
 	use doc && myconf="${myconf} --doxygen"
+	use freebob && myconf="${myconf} --freebob"
+	use ieee1394 && myconf="${myconf} --firewire"
 
 	einfo "Running \"./waf configure ${myconf}\" ..."
 	./waf configure ${myconf} || die "waf configure failed"
