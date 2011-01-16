@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="lash"
 
 RDEPEND="media-sound/jack-audio-connection-kit[dbus]
-	x11-libs/flowcanvas
+	>=x11-libs/flowcanvas-0.6.4
 	sys-apps/dbus
 	>dev-libs/glib-2.20.3
 	>x11-libs/gtk+-2.12.1
