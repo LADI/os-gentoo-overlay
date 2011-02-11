@@ -34,7 +34,7 @@ index fe4db8f..4a48e3a 100644
  		    <widget class="GtkImageMenuItem" id="file_clear_all">
  		      <property name="visible">True</property>
 diff --git a/src/gui/dinogui.cpp b/src/gui/dinogui.cpp
-index 782abe6..8ea7581 100644
+index 2e2a860..807a001 100644
 --- a/src/gui/dinogui.cpp
 +++ b/src/gui/dinogui.cpp
 @@ -68,9 +68,9 @@ DinoGUI::DinoGUI(int argc, char** argv, RefPtr<Xml> xml)
@@ -50,7 +50,7 @@ index 782abe6..8ea7581 100644
    }
    
    m_window = w<Gtk::Window>(xml, "main_window");
-@@ -95,6 +95,16 @@ DinoGUI::DinoGUI(int argc, char** argv, RefPtr<Xml> xml)
+@@ -94,6 +94,16 @@ DinoGUI::DinoGUI(int argc, char** argv, RefPtr<Xml> xml)
    reset_gui();
    
    m_window->show_all();
@@ -67,7 +67,7 @@ index 782abe6..8ea7581 100644
  }
  
  
-@@ -103,9 +113,20 @@ Gtk::Window* DinoGUI::get_window() {
+@@ -102,22 +112,32 @@ Gtk::Window* DinoGUI::get_window() {
  }
  
  
@@ -87,9 +87,9 @@ index 782abe6..8ea7581 100644
 +    m_song.set_length(32);
 +  }
    reset_gui();
-   m_seq.reset_ports();
+-  m_seq.reset_ports();
    m_seq.go_to_beat(0);
-@@ -113,12 +134,12 @@ void DinoGUI::slot_file_open() {
+ }
  
  
  void DinoGUI::slot_file_save() {
@@ -104,7 +104,7 @@ index 782abe6..8ea7581 100644
  }
  
  
-@@ -191,6 +212,9 @@ void DinoGUI::reset_gui() {
+@@ -190,6 +210,9 @@ void DinoGUI::reset_gui() {
  
  void DinoGUI::init_menus(RefPtr<Xml>& xml) {
    map<string, void (DinoGUI::*)(void)> menuSlots;
@@ -182,6 +182,59 @@ index 7747864..c230196 100644
    
    // setup a signal handler and a timeout function that will let us
    // quit cleanly if the user terminates us with a signal
+diff --git a/src/libdinoseq/sequencer.cpp b/src/libdinoseq/sequencer.cpp
+index 8f4ae2f..e12f35d 100644
+--- a/src/libdinoseq/sequencer.cpp
++++ b/src/libdinoseq/sequencer.cpp
+@@ -86,7 +86,6 @@ namespace Dino {
+     m_song->signal_track_added.connect(mem_fun(*this, &Sequencer::track_added));
+     m_song->signal_track_removed.
+       connect(mem_fun(*this, &Sequencer::track_removed));
+-    reset_ports();
+     return true;
+   }
+ 
+@@ -181,13 +180,6 @@ namespace Dino {
+   }
+ 
+ 
+-  void Sequencer::reset_ports() {
+-    Song::ConstTrackIterator iter;
+-    for (iter = m_song->tracks_begin(); iter != m_song->tracks_end(); ++iter)
+-      track_added(iter->get_id());
+-  }
+-
+-  
+   bool Sequencer::init_jack(const string& client_name) {
+   
+     dbg1<<"Initialising JACK client"<<endl;
+@@ -232,6 +224,13 @@ namespace Dino {
+     if (m_valid) {
+       char track_name[10];
+       std::sprintf(track_name, "Track %d", track);
++
++      if (m_output_ports[track]) {
++        dbg0<<track_name<<" already added"<<endl;
++        assert(false);
++        return;
++      }
++
+       jack_port_t* port = jack_port_register(m_jack_client, track_name, 
+ 					     JACK_DEFAULT_MIDI_TYPE, 
+ 					     JackPortIsOutput, 0);
+diff --git a/src/libdinoseq/sequencer.hpp b/src/libdinoseq/sequencer.hpp
+index dd4aa56..f07368e 100644
+--- a/src/libdinoseq/sequencer.hpp
++++ b/src/libdinoseq/sequencer.hpp
+@@ -91,8 +91,6 @@ namespace Dino {
+ 	saved in the .dino file since all connections are supposed to be
+ 	restored by LASH. */
+     void set_instrument(int track, const string& instrument);
+-    /** This creates new MIDI output ports for all tracks. */
+-    void reset_ports();
+     //@}
+     
+     /// @name Signals
 diff --git a/src/libdinoseq/song.cpp b/src/libdinoseq/song.cpp
 index 5294d04..6893400 100644
 --- a/src/libdinoseq/song.cpp
