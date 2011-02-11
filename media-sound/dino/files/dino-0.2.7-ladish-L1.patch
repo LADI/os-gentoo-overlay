@@ -1,0 +1,206 @@
+diff --git a/dino.glade b/dino.glade
+index fe4db8f..4a48e3a 100644
+--- a/dino.glade
++++ b/dino.glade
+@@ -38,6 +38,30 @@
+ 	      <child>
+ 		<widget class="GtkMenu" id="menuitem1_menu">
+ 
++		  <!-- <child> -->
++		  <!--   <widget class="GtkImageMenuItem" id="file_open"> -->
++		  <!--     <property name="visible">True</property> -->
++		  <!--     <property name="label">gtk-open</property> -->
++		  <!--     <property name="use_stock">True</property> -->
++		  <!--   </widget> -->
++		  <!-- </child> -->
++
++		  <child>
++		    <widget class="GtkImageMenuItem" id="file_save">
++		      <property name="visible">True</property>
++		      <property name="label">gtk-save</property>
++		      <property name="use_stock">True</property>
++		    </widget>
++		  </child>
++
++		  <!-- <child> -->
++		  <!--   <widget class="GtkImageMenuItem" id="file_save_as"> -->
++		  <!--     <property name="visible">True</property> -->
++		  <!--     <property name="label">gtk-save-as</property> -->
++		  <!--     <property name="use_stock">True</property> -->
++		  <!--   </widget> -->
++		  <!-- </child> -->
++
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="file_clear_all">
+ 		      <property name="visible">True</property>
+diff --git a/src/gui/dinogui.cpp b/src/gui/dinogui.cpp
+index 782abe6..8ea7581 100644
+--- a/src/gui/dinogui.cpp
++++ b/src/gui/dinogui.cpp
+@@ -68,9 +68,9 @@ DinoGUI::DinoGUI(int argc, char** argv, RefPtr<Xml> xml)
+   }
+   
+   if (!init_lash(argc, argv)) {
+-    MessageDialog dlg("Could not initialise LASH! You will not be able "
+-		      "to save your session.", false, MESSAGE_WARNING);
+-    dlg.run();
++    // MessageDialog dlg("Could not initialise LASH! You will not be able "
++		//       "to save your session.", false, MESSAGE_WARNING);
++    // dlg.run();
+   }
+   
+   m_window = w<Gtk::Window>(xml, "main_window");
+@@ -95,6 +95,16 @@ DinoGUI::DinoGUI(int argc, char** argv, RefPtr<Xml> xml)
+   reset_gui();
+   
+   m_window->show_all();
++
++  if (argc == 2) {
++    //dbg1<<"arg: "<<argv[1]<<endl;
++    m_filename = argv[1];
++  }
++  else {
++    m_filename = "output.dino";
++  }
++
++  slot_file_open();
+ }
+ 
+ 
+@@ -103,9 +113,20 @@ Gtk::Window* DinoGUI::get_window() {
+ }
+ 
+ 
++void DinoGUI::save() {
++  m_song.write_file(m_filename);
++}
++
++
+ void DinoGUI::slot_file_open() {
+   m_seq.stop();
+-  m_song.load_file("output.dino");
++  try {
++    m_song.load_file(m_filename);
++  }
++  catch (...) {
++    m_song.clear();
++    m_song.set_length(32);
++  }
+   reset_gui();
+   m_seq.reset_ports();
+   m_seq.go_to_beat(0);
+@@ -113,12 +134,12 @@ void DinoGUI::slot_file_open() {
+ 
+ 
+ void DinoGUI::slot_file_save() {
+-  m_song.write_file("output.dino");
++  save();
+ }
+ 
+ 
+ void DinoGUI::slot_file_save_as() {
+-  m_song.write_file("output.dino");
++  save();
+ }
+ 
+ 
+@@ -191,6 +212,9 @@ void DinoGUI::reset_gui() {
+ 
+ void DinoGUI::init_menus(RefPtr<Xml>& xml) {
+   map<string, void (DinoGUI::*)(void)> menuSlots;
++  // menuSlots["file_open"] = &DinoGUI::slot_file_open;
++  menuSlots["file_save"] = &DinoGUI::slot_file_save;
++  // menuSlots["file_save_as"] = &DinoGUI::slot_file_save_as;
+   menuSlots["file_clear_all"] = &DinoGUI::slot_file_clear_all;
+   menuSlots["file_quit"] = &DinoGUI::slot_file_quit;
+   menuSlots["edit_cut"] = &DinoGUI::slot_edit_cut;
+diff --git a/src/gui/dinogui.hpp b/src/gui/dinogui.hpp
+index dc55c29..902941a 100644
+--- a/src/gui/dinogui.hpp
++++ b/src/gui/dinogui.hpp
+@@ -50,6 +50,8 @@ public:
+   DinoGUI(int argc, char** argv, Glib::RefPtr<Gnome::Glade::Xml> xml);
+   
+   Gtk::Window* get_window();
++
++  void save();
+   
+ private:
+ 
+@@ -121,6 +123,8 @@ private:
+   Dino::Song m_song;
+     
+   lash_client_t* m_lash_client;
++
++  string m_filename;
+ };
+ 
+ 
+diff --git a/src/gui/main.cpp b/src/gui/main.cpp
+index 7747864..c230196 100644
+--- a/src/gui/main.cpp
++++ b/src/gui/main.cpp
+@@ -51,13 +51,20 @@ static void print_version() {
+ }
+ 
+ 
++DinoGUI * g_dino_ptr;
+ static bool do_quit = false;
++static bool do_save = false;
+ static int signum = 0;
+ 
+ 
+ static void signal_handler(int signal) {
+-  signum = signal;
+-  do_quit = true;
++  if (signal == SIGUSR1) {
++    do_save = true;
++  }
++  else {
++    signum = signal;
++    do_quit = true;
++  }
+ }
+ 
+ 
+@@ -66,6 +73,10 @@ static bool signal_checker() {
+     dbg0<<"Caught signal "<<signum<<endl;
+     Main::quit();
+   }
++  else if (do_save) {
++    do_save = false;
++    g_dino_ptr->save();
++  }
+   return true;
+ }
+ 
+@@ -91,6 +102,7 @@ int main(int argc, char** argv) {
+   refXml = Xml::create(filename);
+     
+   DinoGUI dino(argc, argv, refXml);
++  g_dino_ptr = &dino; // In a perfect world DinoGUI will be inherited from Gtk::Main and this will not be needed
+   
+   // setup a signal handler and a timeout function that will let us
+   // quit cleanly if the user terminates us with a signal
+diff --git a/src/libdinoseq/song.cpp b/src/libdinoseq/song.cpp
+index 5294d04..6893400 100644
+--- a/src/libdinoseq/song.cpp
++++ b/src/libdinoseq/song.cpp
+@@ -377,6 +377,8 @@ namespace Dino {
+   bool Song::write_file(const string& filename) const {
+     Document doc;
+     Element* dino_elt = doc.create_root_node("dinosong");
++
++    dbg1<<"Writing song to "<<filename<<endl;
+   
+     // write metadata 
+     dino_elt->set_attribute("title", m_title);
+@@ -425,6 +427,8 @@ namespace Dino {
+     const TextNode* text_node;
+     Node::NodeList::const_iterator iter;
+   
++    dbg1<<"Loading song from "<<filename<<endl;
++
+     // get attributes
+     set_title(dino_elt->get_attribute("title")->get_value());
+     set_author(dino_elt->get_attribute("author")->get_value());

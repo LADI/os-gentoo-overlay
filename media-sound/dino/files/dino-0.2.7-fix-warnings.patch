@@ -1,0 +1,26 @@
+diff --git a/src/libdinoseq/pattern.cpp b/src/libdinoseq/pattern.cpp
+index 5a038b1..ec7bd05 100644
+--- a/src/libdinoseq/pattern.cpp
++++ b/src/libdinoseq/pattern.cpp
+@@ -699,7 +699,7 @@ namespace Dino {
+       ctrl_elt->set_attribute("max", tmp_txt);
+ 
+       // add control points
+-      for (int i = 0; i < citer->get_size(); ++i) {
++      for (unsigned int i = 0; i < citer->get_size(); ++i) {
+ 	InterpolatedEvent const* evt = citer->get_event(i);
+ 	if (evt && evt->get_step() == i) {
+ 	  Element* point_elt = ctrl_elt->add_child("point");
+diff --git a/src/libdinoseq/sequencer.cpp b/src/libdinoseq/sequencer.cpp
+index 8f4ae2f..a6fb55b 100644
+--- a/src/libdinoseq/sequencer.cpp
++++ b/src/libdinoseq/sequencer.cpp
+@@ -193,7 +193,7 @@ namespace Dino {
+     dbg1<<"Initialising JACK client"<<endl;
+   
+     jack_set_error_function(&Sequencer::jack_error_function);
+-    m_jack_client = jack_client_new(client_name.c_str());
++    m_jack_client = jack_client_open(client_name.c_str(), JackNullOption, NULL);
+     if (!m_jack_client)
+       return false;
+     int err;

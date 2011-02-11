@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=2
+
 inherit eutils jackmidi
 RESTRICT="mirror"
 IUSE="debug"
@@ -22,6 +24,11 @@ DEPEND=">=dev-cpp/libglademm-2.4.1
 src_unpack() {
 	need_jackmidi
 	unpack ${A}
+}
+
+src_prepare() {
+	epatch "${FILESDIR}/dino-0.2.7-fix-warnings.patch"
+	epatch "${FILESDIR}/dino-0.2.7-ladish-L1.patch"
 }
 
 src_compile() {
