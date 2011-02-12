@@ -56,6 +56,7 @@ pkg_nofetch() {
 
 src_prepare() {
 	epatch "${FILESDIR}/ardour-2.8.8-ladish-L1.patch"
+	epatch "${FILESDIR}/ardour2-lv2-load-fix.patch"
 }
 
 ardour_use_enable() {
