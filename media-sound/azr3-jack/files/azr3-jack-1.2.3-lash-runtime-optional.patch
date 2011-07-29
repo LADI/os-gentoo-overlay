@@ -1,0 +1,25 @@
+diff --git a/azr3/main.cpp b/azr3/main.cpp
+index 344fd03..32d86dd 100644
+--- a/azr3/main.cpp
++++ b/azr3/main.cpp
+@@ -166,9 +166,8 @@ Main::Main(int& argc, char**& argv) : m_ok(false) {
+     }
+   }
+     
+-  // initialise LASH
+-  if (!init_lash(lash_args, jack_get_client_name(m_jack_client)))
+-    return;
++  // initialise LASH, if possible
++  init_lash(lash_args, jack_get_client_name(m_jack_client));
+   
+   m_win->set_title("AZR-3");
+   m_win->set_resizable(false);
+@@ -190,8 +189,6 @@ void Main::run() {
+   Glib::signal_timeout().
+     connect(sigc::bind_return(sigc::mem_fun(*this, &Main::check_changes), 
+ 			      true), 10);
+-  Glib::signal_timeout().
+-    connect(sigc::mem_fun(*this, &Main::check_lash_events), 500);
+   m_kit->run(*m_win);
+   jack_deactivate(m_jack_client);
+   m_engine->deactivate();
