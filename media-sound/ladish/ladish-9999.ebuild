@@ -16,9 +16,9 @@ KEYWORDS=""
 IUSE="lash"
 
 RDEPEND="media-sound/jack-audio-connection-kit[dbus]
-	=x11-libs/flowcanvas-9999
+	>=x11-libs/flowcanvas-0.6.4
 	>dev-libs/glib-2.20.3
-	>x11-libs/gtk+-2.12.1
+	>=x11-libs/gtk+-2.20.0
 	>gnome-base/libglade-2.6.2
 	>dev-libs/dbus-glib-0.74
 	dev-lang/python"

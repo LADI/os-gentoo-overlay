@@ -2,5 +2,11 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  10 Oct 2011; Maxim Kachur <mcdebugger@duganet.ru>
+  ladish-9999.ebuild:
+  update dependencies
+  we shouldn't require =x11-libs/flowcanvas-9999 at this time cause ladish will not work with it
+  ladish depends on >=x11-libs/gtk+-2.20.0 (took from waf script)
+
   28 Dec 2008; Marc-Olivier Barre <marco@marcochapeau.org>
   ladish-9999.ebuild: add some more precise dependencies to make gladish work
