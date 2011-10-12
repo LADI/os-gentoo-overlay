@@ -23,7 +23,7 @@ RDEPEND="dev-lang/python
 	|| ( >=media-sound/jack-audio-connection-kit-0.109.2-r2[dbus]
 		media-sound/jackdmp[dbus] )
 	>=media-sound/lash-0.6.0_rc2
-	x11-libs/vte[python]"
+	x11-libs/vte"
 DEPEND="dev-lang/python"
 
 S="${WORKDIR}/${MY_P}"
