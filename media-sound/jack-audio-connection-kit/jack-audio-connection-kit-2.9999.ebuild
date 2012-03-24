@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit flag-o-matic git
+inherit flag-o-matic git-2
 
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
 HOMEPAGE="http://www.grame.fr/~letz/jackdmp.html"
@@ -13,7 +13,7 @@ EGIT_COMMIT="ladi"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 x86"
 IUSE="alsa classic doc debug freebob dbus ieee1394 mixed"
 
 RDEPEND="

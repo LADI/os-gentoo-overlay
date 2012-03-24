@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit flag-o-matic eutils multilib git linux-info autotools
+inherit flag-o-matic eutils multilib git-2 autotools
 
 RESTRICT="strip mirror"
 DESCRIPTION="A low-latency audio server"
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	"
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 	cd "${S}"
 	eautoreconf
 }
