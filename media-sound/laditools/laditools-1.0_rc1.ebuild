@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 inherit distutils
 
@@ -20,8 +20,7 @@ IUSE=""
 RDEPEND="dev-lang/python
 	dev-python/pygtk
 	dev-python/pyxml
-	|| ( >=media-sound/jack-audio-connection-kit-0.109.2-r2[dbus]
-		media-sound/jackdmp[dbus] )
+	>=media-sound/jack-audio-connection-kit-0.109.2-r2[dbus]
 	>=media-sound/lash-0.6.0_rc2
 	x11-libs/vte"
 DEPEND="dev-lang/python"
