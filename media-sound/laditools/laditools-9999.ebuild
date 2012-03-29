@@ -9,7 +9,7 @@ inherit distutils git-2
 DESCRIPTION="LADITools is a set of tools to improve desktop integration and user workflow of Linux audio systems"
 HOMEPAGE="http://www.marcochapeau.org/software/laditools"
 
-EGIT_REPO_URI="git://git.marcochapeau.org/laditools.git"
+EGIT_REPO_URI="git://repo.or.cz/laditools.git"
 
 LICENSE="GPL-3"
 SLOT="0"
