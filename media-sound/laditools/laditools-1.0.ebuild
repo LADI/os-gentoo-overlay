@@ -17,10 +17,11 @@ IUSE=""
 
 PYTHON_DEPEND="2:2.6"
 
+DEPEND="dev-python/python-distutils-extra"
+
 RDEPEND="dev-lang/python
 	>=dev-python/enum-0.4.4
 	>=media-sound/jack-audio-connection-kit-0.109.2-r2[dbus]
 	>=x11-libs/vte-0.30.1[introspection]"
-DEPEND="dev-lang/python"
 
 DOCS="README"
