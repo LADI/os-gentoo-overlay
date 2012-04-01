@@ -6,9 +6,8 @@ EAPI="3"
 
 inherit distutils git-2
 
-DESCRIPTION="LADITools is a set of tools to improve desktop integration and user workflow of Linux audio systems"
-HOMEPAGE="http://www.marcochapeau.org/software/laditools"
-
+DESCRIPTION="Control and monitor a LADI system the easy way"
+HOMEPAGE="https://launchpad.net/laditools"
 EGIT_REPO_URI="git://repo.or.cz/laditools.git"
 
 LICENSE="GPL-3"
