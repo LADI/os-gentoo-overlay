@@ -1,8 +1,13 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit python distutils
+EAPI="4"
+
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.*"
+
+inherit python distutils eutils
 
 DESCRIPTION="Library for windowmaker dockapps using python."
 HOMEPAGE="http://pywmdockapps.sourceforge.net/old-index.html"
@@ -12,19 +17,13 @@ IUSE=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
+
 src_unpack() {
 	unpack ${A}
-	cd pywmdockapps-${PV}
+	mv pywmdockapps-${PV} wmdocklib-${PV}
+}
+
+src_prepare() {
 	epatch "${FILESDIR}/wmdocklib-only.patch"
-}
-
-src_compile() {
-	cd pywmdockapps-${PV}
-	distutils_src_compile
-}
-
-src_install() {
-	cd pywmdockapps-${PV}
-	distutils_src_install
 }
