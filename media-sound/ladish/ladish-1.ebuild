@@ -14,7 +14,7 @@ SRC_URI="http://ladish.org/download/ladish-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="lash python"
 
 RDEPEND="!media-sound/lash
