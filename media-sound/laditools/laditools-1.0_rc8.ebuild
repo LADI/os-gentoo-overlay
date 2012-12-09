@@ -5,16 +5,18 @@
 EAPI="5"
 
 PYTHON_COMPAT="python2_7"
+inherit eutils python-distutils-ng
 
-inherit git-2 python-distutils-ng
+MY_P="${P/_/~}"
+MY_V="${PV/_/-}"
 
-DESCRIPTION="Control and monitor a LADI system the easy way"
-HOMEPAGE="https://launchpad.net/laditools"
-EGIT_REPO_URI="git://repo.or.cz/laditools.git"
+DESCRIPTION="LADITools is a set of tools to improve desktop integration and user workflow of Linux audio systems"
+HOMEPAGE="http://www.marcochapeau.org/software/laditools"
+SRC_URI="https://launchpad.net/laditools/trunk/${MY_V}/+download/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/python
@@ -27,3 +29,10 @@ RDEPEND="dev-lang/python
 	x11-libs/vte[introspection]
 	>=media-sound/jack-audio-connection-kit-0.109.2-r2[dbus]"
 DEPEND="dev-python/python-distutils-extra"
+
+S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	epatch "${FILESDIR}/${P}-rsvg.patch"
+	python-distutils-ng_src_prepare
+}

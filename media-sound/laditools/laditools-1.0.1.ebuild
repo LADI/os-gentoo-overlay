@@ -5,16 +5,15 @@
 EAPI="5"
 
 PYTHON_COMPAT="python2_7"
+inherit eutils python-distutils-ng
 
-inherit git-2 python-distutils-ng
-
-DESCRIPTION="Control and monitor a LADI system the easy way"
-HOMEPAGE="https://launchpad.net/laditools"
-EGIT_REPO_URI="git://repo.or.cz/laditools.git"
+DESCRIPTION="LADITools is a set of tools to improve desktop integration and user workflow of Linux audio systems"
+HOMEPAGE="http://www.marcochapeau.org/software/laditools"
+SRC_URI="https://launchpad.net/laditools/1.0/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/python
