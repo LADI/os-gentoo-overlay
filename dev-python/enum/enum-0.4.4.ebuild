@@ -2,12 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI="5"
 
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.*"
+PYTHON_COMPAT="python2_6 python2_7"
 
-inherit python distutils
+inherit python-distutils-ng
 
 DESCRIPTION="Robust enumerated type support in Python."
 HOMEPAGE="http://pypi.python.org/pypi/enum/"
