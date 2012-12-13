@@ -3,15 +3,15 @@
 # $Header: $
 
 EAPI="5"
-inherit autotools-utils eutils flag-o-matic toolchain-funcs
+inherit autotools-utils eutils git-2
 
 DESCRIPTION="JACK Rack is an effects rack for the JACK low latency audio API."
 HOMEPAGE="http://jack-rack.sourceforge.net/"
-SRC_URI="mirror://sourceforge/jack-rack/${P}.tar.gz"
+EGIT_REPO_URI="git://jack-rack.git.sourceforge.net/gitroot/jack-rack/jack-rack"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS=""
 IUSE="alsa gnome lash nls xml"
 
 RDEPEND="x11-libs/gtk+:2
@@ -29,16 +29,8 @@ DEPEND="${RDEPEND}
 
 AUTOTOOLS_AUTORECONF="1"
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO WISHLIST )
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.5-asneeded.patch
-	"${FILESDIR}"/${PN}-1.4.6-noalsa.patch
-	"${FILESDIR}"/${PN}-1.4.7-disable_deprecated.patch
-)
 
 src_configure() {
-	# Use lrdf.pc to get -I/usr/include/raptor2 (lrdf.h -> raptor.h)
-	use xml && append-cppflags $($(tc-getPKG_CONFIG) --cflags lrdf)
-
 	myeconfargs=(
 		$(use_enable alsa aseq)
 		$(use_enable gnome)
