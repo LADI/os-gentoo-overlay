@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>no-herd</herd>
   <maintainer>
     <email>nedko@arnadov.name</email>
     <name>Nedko Arnaudov</name>
@@ -9,5 +8,9 @@
   <maintainer>
     <email>marco@marcochapeau.org</email>
     <name>Marc-Olivier Barre</name>
+  </maintainer>
+  <maintainer>
+    <email>lilrc@users.sourceforge.net</email>
+    <name>Karl Lindén</name>
   </maintainer>
 </pkgmetadata>
