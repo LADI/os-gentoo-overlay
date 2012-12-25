@@ -5,7 +5,7 @@
 EAPI="5"
 
 PYTHON_COMPAT="python2_7"
-inherit eutils python-distutils-ng
+inherit eutils python-r1 distutils-r1
 
 DESCRIPTION="LADITools is a set of tools to improve desktop integration and user workflow of Linux audio systems"
 HOMEPAGE="http://www.marcochapeau.org/software/laditools"
@@ -20,7 +20,7 @@ RDEPEND="dev-lang/python
 	>=dev-python/pygtk-2.12
 	dev-python/pyxdg
 	>=dev-python/enum-0.4.4
-	dev-python/pygobject[introspection]
+	>=dev-python/pygobject-3.0.0
 	dev-python/pyxml
 	>=x11-libs/gtk+-3.0.0[introspection]
 	x11-libs/vte[introspection]

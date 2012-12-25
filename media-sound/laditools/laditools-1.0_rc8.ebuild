@@ -5,7 +5,7 @@
 EAPI="5"
 
 PYTHON_COMPAT="python2_7"
-inherit eutils python-distutils-ng
+inherit eutils python-r1 distutils-r1
 
 MY_P="${P/_/~}"
 MY_V="${PV/_/-}"
@@ -23,7 +23,7 @@ RDEPEND="dev-lang/python
 	>=dev-python/pygtk-2.12
 	dev-python/pyxdg
 	>=dev-python/enum-0.4.4
-	dev-python/pygobject[introspection]
+	>=dev-python/pygobject-3.0.0
 	dev-python/pyxml
 	>=x11-libs/gtk+-3.0.0[introspection]
 	x11-libs/vte[introspection]
@@ -34,5 +34,5 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-rsvg.patch"
-	python-distutils-ng_src_prepare
+	default
 }

@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Dec 2012; Karl Lindén <lilrc@users.sourceforge.net>
+  laditools-1.0_rc8-ebuild, laditools_1.0.1.ebuild, laditools-9999.ebuild:
+  Replace deprecated python-distutils-ng with python-r1 + distutils-r1
+  Fix dependency on pygobject
+
   09 Dec 2012; Karl Lindén <lilrc@users.sourceforge.net>
   +laditools-1.0.1.ebuild, +laditools-1.0_rc8.ebuild, laditools-9999.ebuild
   +files/laditools-1.0_rc8-rsvg.patch:
