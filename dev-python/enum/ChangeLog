@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Dec 2012; Karl Lindén <lilrc@users.sourceforge.net>
+  enum-0.4.4.ebuild: fixed SRC_URI fault, now uses http
+  instead of mirror. Thanks to Dominique Michel.
+
   09 Dec 2012; Karl Lindén <lilrc@users.sourceforge.net>
   enum-0.4.4.ebuild: updated EAPI and made the ebuild use
   python-distutils-ng instead of python and distutils

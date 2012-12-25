@@ -10,7 +10,7 @@ inherit python-distutils-ng
 
 DESCRIPTION="Robust enumerated type support in Python."
 HOMEPAGE="http://pypi.python.org/pypi/enum/"
-SRC_URI="mirror://pypi.python.org/packages/source/e/enum/enum-${PV}.tar.gz"
+SRC_URI="http://pypi.python.org/packages/source/e/enum/enum-${PV}.tar.gz"
 
 IUSE=""
 
