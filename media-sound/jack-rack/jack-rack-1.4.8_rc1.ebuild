@@ -1,11 +1,11 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/jack-rack/jack-rack-1.4.8_rc1.ebuild,v 1.3 2012/11/30 11:59:44 aballier Exp $
+# $Header: $
 
-EAPI=4
-inherit autotools eutils flag-o-matic toolchain-funcs
+EAPI="5"
+inherit autotools-utils eutils flag-o-matic toolchain-funcs
 
-MY_P=${PN}_${PV/_/\~}
+MY_P="${PN}_${PV/_/~}"
 DEB_URI="mirror://debian/pool/main/j/${PN}"
 
 DESCRIPTION="JACK Rack is an effects rack for the JACK low latency audio API."
@@ -21,7 +21,7 @@ RDEPEND=">=x11-libs/gtk+-2.12:2
 	>=media-libs/ladspa-sdk-1.12
 	media-sound/jack-audio-connection-kit
 	alsa? ( media-libs/alsa-lib )
-	lash? ( >=media-sound/lash-0.5 )
+	lash? ( virtual/liblash )
 	gnome? ( >=gnome-base/libgnomeui-2 )
 	virtual/libintl
 	xml? ( dev-libs/libxml2
@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
 
+AUTOTOOLS_AUTORECONF="1"
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO WISHLIST )
 
 src_unpack() {
@@ -41,27 +42,28 @@ src_prepare() {
 	EPATCH_FORCE=yes EPATCH_SUFFIX=patch epatch "${WORKDIR}"/debian/patches
 
 	epatch \
-		"${FILESDIR}"/${PN}-1.4.6-noalsa.patch \
-		"${FILESDIR}"/${PN}-1.4.7-disable_deprecated.patch \
-		"${FILESDIR}"/${P}-noxml.patch
+		"${FILESDIR}/${PN}-1.4.6-noalsa.patch" \
+		"${FILESDIR}/${PN}-1.4.7-disable_deprecated.patch" \
+		"${FILESDIR}/${P}-noxml.patch"
 
 	sed -i \
 		-e '/Categories/s:Application:GTK:' \
 		-e '/Icon/s:.png::' \
-		${PN}.desktop || die
+		"${PN}.desktop" || die
 
-	eautopoint
-	eautoreconf
+	autotools-utils_src_prepare
 }
 
 src_configure() {
 	# Use lrdf.pc to get -I/usr/include/raptor2 (lrdf.h -> raptor.h)
 	use xml && append-cppflags $($(tc-getPKG_CONFIG) --cflags lrdf)
 
-	econf \
-		$(use_enable alsa aseq) \
-		$(use_enable gnome) \
-		$(use_enable lash) \
-		$(use_enable xml) \
+	local myeconfargs=(
+		$(use_enable alsa aseq)
+		$(use_enable gnome)
+		$(use_enable lash)
+		$(use_enable xml)
 		$(use_enable xml lrdf)
+	)
+	autotools-utils_src_configure
 }

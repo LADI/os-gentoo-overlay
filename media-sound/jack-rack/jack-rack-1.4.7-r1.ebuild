@@ -30,9 +30,9 @@ DEPEND="${RDEPEND}
 AUTOTOOLS_AUTORECONF="1"
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO WISHLIST )
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.5-asneeded.patch
-	"${FILESDIR}"/${PN}-1.4.6-noalsa.patch
-	"${FILESDIR}"/${PN}-1.4.7-disable_deprecated.patch
+	"${FILESDIR}/${PN}-1.4.5-asneeded.patch"
+	"${FILESDIR}/${PN}-1.4.6-noalsa.patch"
+	"${FILESDIR}/${PN}-1.4.7-disable_deprecated.patch"
 )
 
 src_configure() {
