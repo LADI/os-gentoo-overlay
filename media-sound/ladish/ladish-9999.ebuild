@@ -14,18 +14,19 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.nedk.org/lad/ladish.git"
 	KEYWORDS=""
-	EGIT_SUBMODULES=()
 else
 	inherit vcs-snapshot
 	SRC_URI="https://github.com/LADI/ladish/archive/${P}.tar.gz
 		https://git.nedk.org/lad/ladish.git/plain/waf -> ${P}-waf-2.0.22"
 	KEYWORDS="~amd64"
 fi
+EGIT_SUBMODULES=()
+
 LICENSE="GPL-2"
 SLOT="0"
 RESTRICT="mirror"
 
-IUSE="debug doc lash"
+IUSE="debug doc lash gtk"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="media-libs/alsa-lib
@@ -33,6 +34,13 @@ RDEPEND="media-libs/alsa-lib
 	sys-apps/dbus
 	dev-libs/expat
 	lash? ( !media-sound/lash )
+	gtk? (
+		dev-libs/glib
+		dev-libs/dbus-glib
+		x11-libs/gtk+:2
+		dev-cpp/gtkmm:2.4
+		>=dev-cpp/libgnomecanvasmm-2.6.0
+	)
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
@@ -41,7 +49,7 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS README NEWS )
 
 PATCHES=(
-	"${FILESDIR}/${P}-disable-gladish.patch"
+	"${FILESDIR}/${PN}-configure-gladish.patch"
 )
 
 src_prepare()
@@ -56,6 +64,7 @@ src_configure() {
 		--distnodeps
 		$(usex debug --debug '')
 		$(usex doc --doxygen '')
+		$(usex gtk '--enable-gladish' '')
 		$(usex lash '--enable-liblash' '')
 	)
 	waf-utils_src_configure "${mywafconfargs[@]}"
