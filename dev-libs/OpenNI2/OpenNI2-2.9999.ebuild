@@ -3,21 +3,26 @@
 
 EAPI=7
 
-SCM=""
-if [ "${PV#9999}" != "${PV}" ] ; then
+#SCM=""
+#if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
-	EGIT_REPO_URI="https://github.com/occipital/openni2"
-fi
+#	EGIT_REPO_URI="https://github.com/occipital/openni2"
+# TODO: publish to github
+	EGIT_REPO_URI="/git/openni2.git"
+	EGIT_BRANCH="nedko"
+#fi
 
 inherit ${SCM} toolchain-funcs multilib java-pkg-opt-2 flag-o-matic
 
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SRC_URI=""
-else
-	KEYWORDS="~amd64 ~arm"
-	SRC_URI="https://github.com/occipital/OpenNI2/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${P/_/-}"
-fi
+#if [ "${PV#9999}" != "${PV}" ] ; then
+#	SRC_URI=""
+#else
+#	KEYWORDS="~amd64 ~arm"
+#	SRC_URI="https://github.com/occipital/OpenNI2/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+#	S="${WORKDIR}/${P/_/-}"
+#fi
+
+#KEYWORDS="arm64" "~arm"
 
 DESCRIPTION="OpenNI2 SDK"
 HOMEPAGE="https://structure.io/openni"
@@ -36,26 +41,25 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	java? ( virtual/jdk:1.8 )"
 
-PATCHES=(
-	"${FILESDIR}/jpeg.patch"
-	"${FILESDIR}/rpath.patch"
-	"${FILESDIR}/soname.patch"
-)
+# these are applied via git
+#PATCHES=(
+#	"${FILESDIR}/jpeg.patch"
+#	"${FILESDIR}/rpath.patch"
+#	"${FILESDIR}/soname.patch"
+#)
 
-src_prepare() {
-	default
-
-	rm -rf ThirdParty/LibJPEG
-	for i in ThirdParty/PSCommon/BuildSystem/Platform.* ; do
-		echo "" > ${i}
-	done
-}
+#src_prepare() {
+#	default
+#
+#	rm -rf ThirdParty/LibJPEG
+#	for i in ThirdParty/PSCommon/BuildSystem/Platform.* ; do
+#		echo "" > ${i}
+#	done
+#}
 
 src_compile() {
 	use neon && export CFLAGS="${CFLAGS} -DXN_NEON"
 	emake \
-		CC="$(tc-getCC)" \
-		CXX="$(tc-getCXX)" \
 		ALLOW_WARNINGS=1 \
 		GLUT_SUPPORTED="$(usex opengl 1 0)" \
 		$(usex java "" ALL_WRAPPERS="") \
@@ -76,7 +80,8 @@ src_install() {
 	insinto /usr/include/openni2
 	doins -r Include/*
 
-	dobin "${S}/Bin/"*Release/{PS1080Console,PSLinkConsole,SimpleRead,EventBasedRead,MultipleStreamRead,MWClosestPointApp}
+#	dobin "${S}/Bin/"*Release/{PS1080Console,PSLinkConsole,SimpleRead,EventBasedRead,MultipleStreamRead,MWClosestPointApp}
+	dobin "${S}/Bin/"*Release/{SimpleRead,EventBasedRead,MultipleStreamRead,MWClosestPointApp}
 	use opengl && dobin "${S}/Bin/"*Release/{NiViewer,SimpleViewer,MultiDepthViewer,ClosestPointViewer}
 
 	if use java ; then
