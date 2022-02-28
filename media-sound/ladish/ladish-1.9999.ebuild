@@ -24,7 +24,7 @@ IUSE="debug doc lash gtk"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="media-libs/alsa-lib
-	media-sound/jack2[dbus]
+	virtual/jack
 	sys-apps/dbus
 	dev-libs/expat
 	lash? ( !media-sound/lash )
