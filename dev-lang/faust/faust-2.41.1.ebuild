@@ -17,11 +17,6 @@ RDEPEND="sys-devel/bison
 		 sys-devel/flex"
 DEPEND="sys-apps/sed"
 
-#S=${WORKDIR}/${PN}
-#src_unpack() {
-#	unpack ${A}
-#}
-
 src_compile() {
 	sed -i "s\/usr/local\ ${D}/usr\ " Makefile
 	emake || die "parallel make failed"
