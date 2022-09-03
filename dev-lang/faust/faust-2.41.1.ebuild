@@ -29,7 +29,7 @@ src_configure() {
 		-C build/backends/all.cmake \
 		-C build/targets/all.cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib64 \
+		-DLIBSDIR=lib64 \
 		-DCMAKE_BUILD_TYPE=None \
 		-DINCLUDE_DYNAMIC=ON \
 		-DINCLUDE_STATIC=ON \
