@@ -3,10 +3,9 @@
 
 EAPI=8
 
-IUSE=""
-
 SLOT="0"
 LICENSE="GPL-2"
+IUSE=""
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 DESCRIPTION="A functional programming language for realtime audio signal processing."
