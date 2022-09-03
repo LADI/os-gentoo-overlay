@@ -12,9 +12,8 @@ DESCRIPTION="A functional programming language for realtime audio signal process
 HOMEPAGE="https://faust.grame.fr/"
 SRC_URI="https://github.com/grame-cncm/faust/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
-RDEPEND="sys-devel/bison
-		 sys-devel/flex"
-DEPEND="sys-apps/sed"
+RDEPEND=""
+DEPEND=""
 
 src_compile() {
 	sed -i "s\/usr/local\ ${D}/usr\ " Makefile
