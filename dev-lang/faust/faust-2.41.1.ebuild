@@ -9,7 +9,7 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-DESCRIPTION="Faust AUdio STreams is a functional programming language for realtime audio plugins and applications development. The Faust compiler translates signal processing specifications into C++ code."
+DESCRIPTION="A functional programming language for realtime audio signal processing."
 HOMEPAGE="https://faust.grame.fr/"
 SRC_URI="https://github.com/grame-cncm/faust/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
