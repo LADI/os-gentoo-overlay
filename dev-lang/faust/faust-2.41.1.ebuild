@@ -10,7 +10,14 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 
 DESCRIPTION="A functional programming language for realtime audio signal processing."
 HOMEPAGE="https://faust.grame.fr/"
-SRC_URI="https://github.com/grame-cncm/faust/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://git.code.sf.net/p/qsynth/code"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/grame-cncm/faust/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="arm64"
+fi
 
 RDEPEND=""
 DEPEND=""
