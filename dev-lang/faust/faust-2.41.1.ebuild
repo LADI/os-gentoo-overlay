@@ -22,6 +22,7 @@ src_configure() {
 		-C build/backends/all.cmake \
 		-C build/targets/all.cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib64 \
 		-DCMAKE_BUILD_TYPE=None \
 		-DINCLUDE_DYNAMIC=ON \
 		-DINCLUDE_STATIC=ON \
@@ -37,7 +38,6 @@ src_compile() {
 }
 
 src_install() {
-#	dodir ${D}/usr/lib/faust
 #	emake DESTDIR="${D}" install
 	emake VERBOSE=1 -C "${P}-build" DESTDIR="${D}" install
 #	dodoc README.md
