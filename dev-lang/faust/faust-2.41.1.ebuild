@@ -12,7 +12,7 @@ DESCRIPTION="A functional programming language for realtime audio signal process
 HOMEPAGE="https://faust.grame.fr/"
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="https://git.code.sf.net/p/qsynth/code"
+	EGIT_REPO_URI="https://github.com/grame-cncm/faust.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/grame-cncm/faust/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
