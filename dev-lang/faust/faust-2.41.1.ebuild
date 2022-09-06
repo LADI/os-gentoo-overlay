@@ -19,8 +19,13 @@ else
 	KEYWORDS="arm64"
 fi
 
-RDEPEND=""
-DEPEND=""
+BDEPEND="
+	>=dev-util/cmake-3.7.2
+"
+RDEPEND="
+	>=sys-devel/llvm-8
+"
+DEPEND="${DEPEND}"
 
 src_configure() {
 	# prevent static libs from being mangled with LTO
