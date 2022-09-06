@@ -36,9 +36,9 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBSDIR=lib64 \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DINCLUDE_DYNAMIC=ON \
-		-DINCLUDE_STATIC=ON \
-		-DINCLUDE_ITP=ON \
+		-DINCLUDE_DYNAMIC=OFF \
+		-DINCLUDE_STATIC=OFF \
+		-DINCLUDE_ITP=OFF \
 		-W no-dev \
 		-S build \
 		-B "${P}-build" || die
