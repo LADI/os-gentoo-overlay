@@ -52,5 +52,7 @@ src_compile() {
 src_install() {
 	dobin build/bin/faust
 	dodoc README.md
-#	install faust_tutorial.pdf ${D}/usr/share/doc/${P}
+	dodoc documentation/faust-quick-reference.pdf
+	dodoc documentation/misc/faust_tutorial.pdf
+	dodoc documentation/misc/Faust_tutorial2.pdf
 }
