@@ -50,8 +50,7 @@ src_compile() {
 }
 
 src_install() {
-#	emake DESTDIR="${D}" install
-	emake VERBOSE=1 -C "${P}-build" DESTDIR="${D}" install
+	dobin build/bin/faust
 	dodoc README.md
 #	install faust_tutorial.pdf ${D}/usr/share/doc/${P}
 }
