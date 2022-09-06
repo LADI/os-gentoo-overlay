@@ -36,7 +36,7 @@ src_configure() {
 		-DINCLUDE_ITP=ON \
 		-W no-dev \
 		-S build \
-		-B "${P}-build"
+		-B "${P}-build" || die
 }
 
 src_compile() {
