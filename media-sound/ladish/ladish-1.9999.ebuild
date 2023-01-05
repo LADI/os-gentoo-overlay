@@ -11,7 +11,7 @@ inherit flag-o-matic python-single-r1 waf-utils
 DESCRIPTION="LADI Session Handler - a session management system for JACK applications"
 HOMEPAGE="https://ladish.org"
 inherit git-r3
-EGIT_REPO_URI="https://git.nedk.org/lad/ladish.git"
+EGIT_REPO_URI="https://github.com/LADI/ladish.git"
 EGIT_BRANCH="1-stable"
 KEYWORDS=""
 EGIT_SUBMODULES=()
