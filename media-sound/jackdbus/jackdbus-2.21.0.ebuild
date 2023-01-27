@@ -9,56 +9,37 @@ inherit flag-o-matic python-single-r1 waf-utils multilib-minimal
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/jackaudio/${PN}.git"
+	EGIT_REPO_URI="https://github.com/LADI/${PN}.git"
 else
-	SRC_URI="https://github.com/jackaudio/jack2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 fi
 
-DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
-HOMEPAGE="https://jackaudio.org/"
+DESCRIPTION="D-Bus endpoint for JACK server"
+HOMEPAGE="https://ladish.org/jackdbus.html"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="2"
-IUSE="+alsa +classic dbus doc ieee1394 libsamplerate metadata opus pam +tools systemd"
+IUSE=""
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-	|| ( classic dbus )"
+	${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
-	dbus? (
-		dev-libs/expat[${MULTILIB_USEDEP}]
-		sys-apps/dbus[${MULTILIB_USEDEP}]
-	)
-	libsamplerate? ( media-libs/libsamplerate[${MULTILIB_USEDEP}] )
-	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )
-	metadata? ( sys-libs/db:=[${MULTILIB_USEDEP}] )
-	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )
-	systemd? ( classic? ( sys-apps/systemd:= ) )"
+	sys-apps/dbus[${MULTILIB_USEDEP}]"
 RDEPEND="
 	${DEPEND}
-	dbus? (
-		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-python/dbus-python[${PYTHON_USEDEP}]
-		')
-	)
-	pam? ( sys-auth/realtime-base )
+	${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+	')
+	!media-sound/jack2::gentoo
 	!media-sound/jack-audio-connection-kit
 	!media-video/pipewire[jack-sdk(-)]"
 BDEPEND="
 	${PYTHON_DEPS}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
-# tools were formerly provided here, pull to maintain expectations
-PDEPEND="tools? ( media-sound/jack-example-tools )"
+	virtual/pkgconfig"
+PDEPEND=""
 
-DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.21-python3.11.patch
-)
+DOCS=( AUTHORS NEWS.rst README.adoc )
 
 src_prepare() {
 	default
@@ -74,27 +55,7 @@ multilib_src_configure() {
 
 	local wafargs=(
 		--mandir="${EPREFIX}"/usr/share/man/man1 # override eclass' for man1
-
-		--alsa=$(usex alsa)
-		--celt=no
-		$(usev classic --classic)
-		--db=$(usex metadata)
-		$(usev dbus --dbus)
-		--doxygen=$(multilib_native_usex doc)
-		--firewire=$(usex ieee1394)
-		--iio=no
-		--opus=$(usex opus)
-		--portaudio=no
-		--samplerate=$(usex libsamplerate)
-		--systemd=$(multilib_native_usex systemd $(usex classic))
-		--winmme=no
-
-		# obsolete options, migrated to media-sound/jack-example-tools
-		# and will be removed entirely next version
-		--example-tools=no
-		--readline=no
-		--sndfile=no
-		--zalsa=no
+		--dbus
 	)
 
 	waf-utils_src_configure "${wafargs[@]}"
