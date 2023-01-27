@@ -6,9 +6,11 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 inherit flag-o-matic python-single-r1 waf-utils multilib-minimal
+inherit git-r3
 
 EGIT_REPO_URI="https://github.com/LADI/jack2.git"
 EGIT_BRANCH="stable"
+EGIT_COMMIT="e1a0a00f07c7d234aaac1fdbafabf1c9fbc38eb8"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 DESCRIPTION="LADI JACK2 is version of the jackdmp, a C++ version of the JACK low-latency audio server for multi-processor machines."
@@ -38,7 +40,7 @@ BDEPEND="
 	doc? ( app-doc/doxygen )"
 PDEPEND=""
 
-DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
+DOCS=( AUTHORS.rst NEWS.rst README.rst README_NETJACK2 )
 
 PATCHES=( )
 
@@ -66,7 +68,7 @@ multilib_src_configure() {
 		--opus=$(usex opus)
 		--portaudio=no
 		--samplerate=$(usex libsamplerate)
-		--systemd=$(multilib_native_usex systemd $(usex classic))
+		--systemd=no
 		--winmme=no
 
 		# obsolete options, migrated to media-sound/jack-example-tools
