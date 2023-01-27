@@ -6,13 +6,13 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 inherit flag-o-matic python-single-r1 waf-utils multilib-minimal
+inherit git-r3
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/LADI/${PN}.git"
-else
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
-fi
+EGIT_REPO_URI="https://github.com/LADI/${PN}.git"
+EGIT_BRANCH="stable"
+EGIT_COMMIT="6e06864b630a9336d338ae4761487f951cf9e2e9"
+
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 DESCRIPTION="D-Bus endpoint for JACK server"
 HOMEPAGE="https://ladish.org/jackdbus.html"
@@ -31,7 +31,6 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 	')
-	!media-sound/jack2::gentoo
 	!media-sound/jack-audio-connection-kit
 	!media-video/pipewire[jack-sdk(-)]"
 BDEPEND="
@@ -55,7 +54,6 @@ multilib_src_configure() {
 
 	local wafargs=(
 		--mandir="${EPREFIX}"/usr/share/man/man1 # override eclass' for man1
-		--dbus
 	)
 
 	waf-utils_src_configure "${wafargs[@]}"
@@ -70,5 +68,5 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	use dbus && python_fix_shebang "${ED}"/usr/bin/jack_control
+	python_fix_shebang "${ED}"/usr/bin/jack_control
 }
