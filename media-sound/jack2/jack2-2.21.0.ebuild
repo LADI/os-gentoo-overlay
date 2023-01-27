@@ -7,22 +7,18 @@ PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 inherit flag-o-matic python-single-r1 waf-utils multilib-minimal
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/LADI/${PN}.git"
-else
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
-fi
+EGIT_REPO_URI="https://github.com/LADI/jack2.git"
+EGIT_BRANCH="stable"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 DESCRIPTION="LADI JACK2 is version of the jackdmp, a C++ version of the JACK low-latency audio server for multi-processor machines."
 HOMEPAGE="https://github.com/LADI/jack2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="2"
-IUSE="+alsa +classic dbus doc ieee1394 libsamplerate metadata opus pam +tools systemd"
+IUSE="+alsa doc ieee1394 libsamplerate metadata opus pam"
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-	&& ( !classic !dbus !systemd )"
+	${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
@@ -33,12 +29,6 @@ DEPEND="
 	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
 RDEPEND="
 	${DEPEND}
-	dbus? (
-		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-python/dbus-python[${PYTHON_USEDEP}]
-		')
-	)
 	pam? ( sys-auth/realtime-base )
 	!media-sound/jack-audio-connection-kit
 	!media-video/pipewire[jack-sdk(-)]"
@@ -46,14 +36,11 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
-# tools were formerly provided here, pull to maintain expectations
-PDEPEND="tools? ( media-sound/jack-example-tools )"
+PDEPEND=""
 
 DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.21-python3.11.patch
-)
+PATCHES=( )
 
 src_prepare() {
 	default
@@ -72,9 +59,7 @@ multilib_src_configure() {
 
 		--alsa=$(usex alsa)
 		--celt=no
-		$(usev classic --classic)
 		--db=$(usex metadata)
-		$(usev dbus --dbus)
 		--doxygen=$(multilib_native_usex doc)
 		--firewire=$(usex ieee1394)
 		--iio=no
@@ -101,8 +86,4 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	waf-utils_src_install
-}
-
-multilib_src_install_all() {
-	use dbus && python_fix_shebang "${ED}"/usr/bin/jack_control
 }
