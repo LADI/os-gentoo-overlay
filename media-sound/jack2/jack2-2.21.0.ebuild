@@ -9,33 +9,28 @@ inherit flag-o-matic python-single-r1 waf-utils multilib-minimal
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/jackaudio/${PN}.git"
+	EGIT_REPO_URI="https://github.com/LADI/${PN}.git"
 else
-	SRC_URI="https://github.com/jackaudio/jack2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 fi
 
-DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
-HOMEPAGE="https://jackaudio.org/"
+DESCRIPTION="LADI JACK2 is version of the jackdmp, a C++ version of the JACK low-latency audio server for multi-processor machines."
+HOMEPAGE="https://github.com/LADI/jack2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="2"
 IUSE="+alsa +classic dbus doc ieee1394 libsamplerate metadata opus pam +tools systemd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	|| ( classic dbus )"
+	&& ( !classic !dbus !systemd )"
 
 DEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
-	dbus? (
-		dev-libs/expat[${MULTILIB_USEDEP}]
-		sys-apps/dbus[${MULTILIB_USEDEP}]
-	)
+	sys-apps/dbus[${MULTILIB_USEDEP}]
 	libsamplerate? ( media-libs/libsamplerate[${MULTILIB_USEDEP}] )
 	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )
 	metadata? ( sys-libs/db:=[${MULTILIB_USEDEP}] )
-	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )
-	systemd? ( classic? ( sys-apps/systemd:= ) )"
+	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
 RDEPEND="
 	${DEPEND}
 	dbus? (
