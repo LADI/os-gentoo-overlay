@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,16 +10,10 @@ inherit flag-o-matic python-single-r1 waf-utils
 
 DESCRIPTION="LADI Session Handler - a session management system for JACK applications"
 HOMEPAGE="https://ladish.org"
-if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.nedk.org/lad/ladish.git"
-	KEYWORDS=""
-else
-	inherit vcs-snapshot
-	SRC_URI="https://github.com/LADI/ladish/archive/${P}.tar.gz
-		https://git.nedk.org/lad/ladish.git/plain/waf -> ${P}-waf-2.0.22"
-	KEYWORDS="~amd64"
-fi
+inherit git-r3
+EGIT_REPO_URI="https://github.com/LADI/ladish.git"
+EGIT_BRANCH="main"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 EGIT_SUBMODULES=()
 
 LICENSE="GPL-2"
