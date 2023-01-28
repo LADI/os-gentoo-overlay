@@ -10,7 +10,7 @@ inherit git-r3
 
 EGIT_REPO_URI="https://github.com/LADI/jack2.git"
 EGIT_BRANCH="stable"
-EGIT_COMMIT="e1a0a00f07c7d234aaac1fdbafabf1c9fbc38eb8"
+EGIT_COMMIT="4651827c88e0e9e7aae9d7216b86ce5e82325c00"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 DESCRIPTION="LADI JACK2 is version of the jackdmp, a C++ version of the JACK low-latency audio server for multi-processor machines."
