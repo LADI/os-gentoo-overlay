@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8,9,10,11} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit flag-o-matic python-single-r1 waf-utils
+inherit flag-o-matic python-single-r1 waf-utils xdg-utils
 
 DESCRIPTION="LADI Session Handler - a session management system for JACK applications"
 HOMEPAGE="https://ladish.org"
@@ -69,4 +69,12 @@ src_install() {
 	use doc && HTML_DOCS="${S}/build/default/html/*"
 	waf-utils_src_install
 	python_fix_shebang "${ED}"
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
