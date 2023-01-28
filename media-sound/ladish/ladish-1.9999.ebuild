@@ -45,7 +45,6 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS README NEWS )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-configure-gladish.patch"
 )
 
 src_prepare()
