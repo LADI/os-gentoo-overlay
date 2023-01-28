@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,6 +13,7 @@ HOMEPAGE="https://ladish.org"
 inherit git-r3
 EGIT_REPO_URI="https://github.com/LADI/ladish.git"
 EGIT_BRANCH="1-stable"
+EGIT_COMMIT=655a9dc2c768b9b3a934982ff1b721cb2386c8c8
 KEYWORDS=""
 EGIT_SUBMODULES=()
 
