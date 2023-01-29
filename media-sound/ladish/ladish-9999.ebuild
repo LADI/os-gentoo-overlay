@@ -48,7 +48,6 @@ PATCHES=(
 
 src_prepare()
 {
-	sed -i -e "s/RELEASE = False/RELEASE = True/" wscript
 	append-cxxflags '-std=c++11'
 	default
 }
