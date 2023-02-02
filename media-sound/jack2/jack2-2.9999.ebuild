@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
-inherit flag-o-matic python-single-r1 waf-utils multilib-minimal
+inherit flag-o-matic python-single-r1 waf-utils
 inherit git-r3
 
 EGIT_REPO_URI="https://github.com/LADI/jack2.git"
@@ -22,12 +22,12 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
-	sys-apps/dbus[${MULTILIB_USEDEP}]
-	libsamplerate? ( media-libs/libsamplerate[${MULTILIB_USEDEP}] )
-	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )
-	metadata? ( sys-libs/db:=[${MULTILIB_USEDEP}] )
-	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
+	alsa? ( media-libs/alsa-lib )
+	sys-apps/dbus
+	libsamplerate? ( media-libs/libsamplerate )
+	ieee1394? ( media-libs/libffado )
+	metadata? ( sys-libs/db )
+	opus? ( media-libs/opus[custom-modes] )"
 RDEPEND="
 	${DEPEND}
 	pam? ( sys-auth/realtime-base )
@@ -47,10 +47,10 @@ src_prepare() {
 	default
 
 	python_fix_shebang waf
-	multilib_copy_sources
+#	copy_sources
 }
 
-multilib_src_configure() {
+src_configure() {
 	# clients crash if built with lto
 	# https://github.com/jackaudio/jack2/issues/485
 	filter-lto
@@ -61,7 +61,7 @@ multilib_src_configure() {
 		--alsa=$(usex alsa)
 		--celt=no
 		--db=$(usex metadata)
-		--doxygen=$(multilib_native_usex doc)
+		--doxygen=$(usex doc)
 		--firewire=$(usex ieee1394)
 		--iio=no
 		--opus=$(usex opus)
@@ -74,10 +74,10 @@ multilib_src_configure() {
 	waf-utils_src_configure "${wafargs[@]}"
 }
 
-multilib_src_compile() {
+src_compile() {
 	waf-utils_src_compile
 }
 
-multilib_src_install() {
+src_install() {
 	waf-utils_src_install
 }
