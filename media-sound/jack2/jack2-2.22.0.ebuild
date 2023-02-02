@@ -70,13 +70,6 @@ multilib_src_configure() {
 		--samplerate=$(usex libsamplerate)
 		--systemd=no
 		--winmme=no
-
-		# obsolete options, migrated to media-sound/jack-example-tools
-		# and will be removed entirely next version
-		--example-tools=no
-		--readline=no
-		--sndfile=no
-		--zalsa=no
 	)
 
 	waf-utils_src_configure "${wafargs[@]}"
