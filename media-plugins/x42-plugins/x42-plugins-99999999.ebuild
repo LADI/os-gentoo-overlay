@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	sys-apps/help2man"
 
 src_compile() {
-	emake CC="$(tc-getCC)" STRIP="#" FONTFILE="/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf"
+	emake CC="$(tc-getCC)" STRIP="#" FONTFILE="/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf" OPTIMIZATIONS="-O3 -ffast-math -fomit-frame-pointer -fno-finite-math-only -DNDEBUG"
 }
 
 src_install() {
