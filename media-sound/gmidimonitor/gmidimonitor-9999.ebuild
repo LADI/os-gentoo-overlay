@@ -32,9 +32,9 @@ DOCS=( AUTHORS README NEWS )
 
 src_configure() {
 	local -a mywafconfargs=(
-		$(usex alsa --alsa=yes --alsa=no)
-		$(usex jack --jack=yes --jack=no)
-		$(usex jack --lash=yes --lash=no)
+		--alsa $(usex alsa)
+		--jack $(usex jack)
+		--lash $(usex lash)
 	)
 	waf-utils_src_configure "${mywafconfargs[@]}"
 }
