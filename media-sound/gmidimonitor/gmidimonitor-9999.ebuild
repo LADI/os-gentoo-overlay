@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9,10,11} )
 PYTHON_REQ_USE='threads(+)'
-inherit git-r3 python-single-r1 waf-utils
+inherit git-r3 python-any-r1 waf-utils
 
 DESCRIPTION=" GTK+ application that shows MIDI events"
 HOMEPAGE="https://github.com/nedko/gmidimonitor"
@@ -18,8 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="alsa jack lash"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( alsa jack )"
+REQUIRED_USE="|| ( alsa jack )"
 
 RDEPEND="x11-libs/gtk+:2
 	alsa? ( media-libs/alsa-lib )
