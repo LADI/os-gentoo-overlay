@@ -1,0 +1,75 @@
+newstable: Feb 09, 53 (2023)
+============================
+
+ * new: dev-lang/faust
+
+  * faust-2.41.1.ebuild
+
+ * new: media-plugins/x42-plugins
+
+  * x42-plugins-99999999.ebuild
+
+ * new: media-sound/gmidimonitor
+
+  * gmidimonitor-9999.ebuild
+
+ * upd: media-sound/jack2
+
+  * jack2-2.21.0.ebuild
+  * jack2-2.22.0.ebuild
+  * jack2-2.9999.ebuild
+  * git src url adjusted to github.com/LADI one, git.nedk.org is down
+  * jack2-2.x codebase incorporates jackaudio.org jack2-1.9.x codebase.
+    For LADIOS, media-sound/jack2 is now jack2-2.x, the ladi-jack2 variants
+  * jackdbus is now packaged as media-sound/jackdbus
+  * media-sound/jack2 does not install jack server frontends (jackdbus, jackd) anymore
+
+ * new: media-sound/jackdbus
+
+  * jackdbus-2.21.0.ebuild
+  * jackdbus-2.9999.ebuild
+
+ * upd: media-sound/ladish
+  * ladish-1.9999.ebuild
+  * ladish-9999.ebuild
+  * updated ladish ebuilds now depends on ladi-jack2
+  * git src url adjusted to github.com/LADI one, git.nedk.org is down
+
+newebuild: Jan 26, 53 (2023)
+============================
+
+ * A jack_mixer-17.ebuild
+
+updebuild: Jan 05, 53 (2023)
+============================
+
+ * Set ladish git repo to github one
+ * media-sound/ladish: add 3.10 and 3.11 to PYTHON_COMPAT
+ * Add dev-cpp/libgnomecanvasmm
+   Copied from main gentoo portage tree where it was removed.
+   Gentoo Bug #808375
+
+updebuild: Sep 03, 52 (2022)
+============================
+
+ * Fix media-sound/ladish maintainer in LADI overlay to match reality
+
+newebuild: Dec 25, 51 (2021)
+============================
+
+ * Initial ladi51 repository
+ * Add ladish-1.9999 (upstream 1-stable git branch)
+
+   * Import ladish ebuilds from audio-overlay
+   * Restore gladish build, remove obsolete ebuild
+   Upstream provides updates for the release 1
+   by pushing commits to the git branch named 1-stable
+
+   These commits are expected to not break
+   any API, ABI or user interface.
+   Intended uses of such commits are to adjust the codebase for:
+    * new hardware
+    * new dependencies
+
+   Downstream packagers that need more stability for their deployments
+   can use date-based tags.
