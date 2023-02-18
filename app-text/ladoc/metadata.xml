@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <maintainer type="project">
+      <name>LADI project, #ladi on libera.chat</name>
+      <email>staff@ladi.internal</email>
+    </maintainer>
+    <remote-id type="github">LADI/ladoc-py</remote-id>
+    <bugs-to>https://github.com/LADI/ladoc-py/issues</bugs-to>
+  </upstream>
+</pkgmetadata>
