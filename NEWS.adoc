@@ -1,6 +1,6 @@
 == newebuild: Feb 18, 53 (2023)
 
- * new: jack2-2.21.1.ebuild
+ * new: jack2-2.22.1.ebuild
 
  ** jack_get_version_string() now reports GIT_VERSION
  ** Change default of self-connect-mode to 'e'
