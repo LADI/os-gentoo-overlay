@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>nedko@nedk.org</email>
-		<name>Nedko Arnaudov</name>
-	</maintainer>
+  <maintainer type="person">
+    <name>Nedko Arnaudov</name>
+    <irc><nick>nedko</nick><network>libera.chat</network></irc>
+  </maintainer>
+  <maintainer type="project">
+    <name>LADI project, #ladi on libera.chat</name>
+    <email>staff@ladi.internal</email>
+  </maintainer>
 </pkgmetadata>
