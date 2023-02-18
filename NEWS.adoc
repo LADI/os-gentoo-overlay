@@ -1,3 +1,10 @@
+== newebuild: Feb 18, 53 (2023)
+
+ * new: jack2-2.21.1.ebuild
+
+ ** jack_get_version_string() now reports GIT_VERSION
+ ** Change default of self-connect-mode to 'e'
+
 == newstable: Feb 09, 53 (2023)
 
  * new: dev-lang/faust
