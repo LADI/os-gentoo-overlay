@@ -1,3 +1,13 @@
+== nextstable: MMM DD, YY (20ZZ)
+
+ * new: asciidoc-9999.ebuild
+
+   This ebuild provides ladoc-py variant of asciidoc
+   Two modifications against upstream asciidoc-py are maintained:
+
+ ** Support for docinfo-header.html
+ ** ladi theme
+
 == newebuild: Feb 18, 53 (2023)
 
  * new: jack2-2.22.1.ebuild
