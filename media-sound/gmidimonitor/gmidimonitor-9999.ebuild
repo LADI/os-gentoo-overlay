@@ -23,7 +23,7 @@ REQUIRED_USE="|| ( alsa jack )"
 RDEPEND="x11-libs/gtk+:2
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
-	lash? ( media-sound/ladish[lash] )"
+	lash? ( virtual/lash )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
