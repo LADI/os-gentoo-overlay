@@ -8,6 +8,9 @@
  ** Support for docinfo-header.html
  ** ladi theme
 
+ * qmidiarp-0.6.5.ebuild updated to EAPI=8
+ * new: qmidiarp-9999.ebuild
+
 == newebuild: Feb 18, 53 (2023)
 
  * new: jack2-2.22.1.ebuild
