@@ -1,0 +1,29 @@
+  requires:
+    !  Class::Accessor is not installed
+    !  DBD::Pg is not installed
+    !  File::Touch is not installed
+    !  IPC::Run is not installed
+    !  IPC::System::Simple is not installed
+    !  JSON::RPC::Legacy::Client is not installed
+    !  JSON::XS is not installed
+    !  List::MoreUtils is not installed
+    !  Net::IP is not installed
+    !  POE is not installed
+    !  POE::Component::IRC is not installed
+    !  POE::Component::Server::SOAP is not installed
+    !  Proc::PID::File is not installed
+    !  SOAP::Lite is not installed
+    !  Schedule::RateLimiter is not installed
+    !  Text::Glob is not installed
+    !  WWW::Shorten is not installed
+    !  YAML is not installed
+  test_requires:
+    !  Dpkg::Version is not installed
+    !  File::Remove is not installed
+    !  Test::Compile is not installed
+    !  Test::Differences is not installed
+    !  Test::Exception is not installed
+    !  Test::Perl::Critic is not installed
+    !  Test::Pod is not installed
+    !  Test::Pod::Coverage is not installed
+    !  YAML is not installed
