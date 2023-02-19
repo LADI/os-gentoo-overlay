@@ -7,6 +7,6 @@
   </maintainer>
   <maintainer type="project">
     <name>LADI project, #ladi on libera.chat</name>
-    <email>staff@ladi.internal</email>
+    <irc><channel>#ladi</channel><network>libera.chat</network></irc>
   </maintainer>
 </pkgmetadata>
