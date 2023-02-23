@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,19 +8,12 @@ inherit xdg
 DESCRIPTION="Linux Studio Plugins"
 HOMEPAGE="https://lsp-plug.in"
 
-if [[ ${PV} == *9999 ]];then
-	inherit git-r3
-	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/sadko4u/lsp-plugins"
-	EGIT_BRANCH="devel"
-else
-	SRC_URI="https://github.com/sadko4u/lsp-plugins/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
-fi
+SRC_URI="https://github.com/sadko4u/lsp-plugins/archive/${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="doc jack ladspa +lv2 test"
+IUSE="doc +jack ladspa +lv2 test"
 REQUIRED_USE="|| ( jack ladspa lv2 )
 	test? ( jack )"
 
