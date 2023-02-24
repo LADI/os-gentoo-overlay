@@ -30,4 +30,5 @@ src_configure() {
 
 src_install() {
 	dobin Coil64
+	default
 }
