@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{6,7,8,9,10,11} )
 inherit distutils-r1 git-r3
 
-DESCRIPTION="LADITools is a set of tools to improve desktop integration and user workflow of Linux audio systems"
+DESCRIPTION="Set of tools to use with jackdbus and other LADI components"
 HOMEPAGE="https://ladish.org"
 
 EGIT_REPO_URI="https://github.com/LADI/laditools.git"
