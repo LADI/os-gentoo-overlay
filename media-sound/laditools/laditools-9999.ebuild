@@ -4,6 +4,7 @@
 
 EAPI="8"
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{6,7,8,9,10,11} )
 inherit distutils-r1 git-r3
 
@@ -13,7 +14,7 @@ HOMEPAGE="https://ladish.org"
 EGIT_REPO_URI="https://github.com/LADI/laditools.git"
 EGIT_BRANCH="main"
 
-LICENSE=""
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE=""
@@ -21,7 +22,7 @@ IUSE=""
 RDEPEND="dev-lang/python
 	dev-python/pyyaml
 	media-sound/jackdbus
-	x11-libs/vte[python]"
-DEPEND="dev-lang/python"
+	x11-libs/vte[introspection]"
+DEPEND="${RDEPEND}"
 
 DOCS="README"
