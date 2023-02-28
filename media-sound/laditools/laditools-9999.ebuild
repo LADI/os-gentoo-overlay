@@ -18,7 +18,6 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE=""
 
-#	dev-python/pygtk
 RDEPEND="dev-lang/python
 	dev-python/pyyaml
 	media-sound/jackdbus
