@@ -24,5 +24,6 @@ RDEPEND="dev-lang/python
 	media-sound/jackdbus
 	x11-libs/vte[introspection]"
 DEPEND="${RDEPEND}"
+BDEPEND="dev-python/python-distutils-extra"
 
 DOCS="README"
