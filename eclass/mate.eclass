@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Authors: NP-Hardass <NP-Hardass@gentoo.org> based upon the gnome2
 # and autotools-utils eclasses
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: mate-desktop.org
 # @BLURB: Provides phases for MATE based packages.
 # @DESCRIPTION:
