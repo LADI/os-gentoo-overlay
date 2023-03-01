@@ -45,6 +45,7 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	gnome-extra/zenity
+	>=mate-base/mate-settings-daemon-${MATE_BRANCH}
 	>=mate-base/mate-desktop-1.20.0
 	virtual/libintl
 "
