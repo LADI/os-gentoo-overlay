@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,7 @@ IUSE="X accessibility debug libnotify policykit pulseaudio rfkill smartcard +sou
 REQUIRED_USE="pulseaudio? ( sound )"
 
 COMMON_DEPEND=">=dev-libs/dbus-glib-0.74
+	>=mate-base/mate-common-1.26.0
 	>=dev-libs/glib-2.50:2
 	>=gnome-base/dconf-0.13.4
 	>=mate-base/libmatekbd-1.17.0
