@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mate.eclass
@@ -36,7 +36,7 @@ GNOME2_LA_PUNT="${MATE_LA_PUNT}"
 inherit gnome2 autotools mate-desktop.org
 
 # Autotools requires our MATE m4 files
-DEPEND=">=mate-base/mate-common-${MATE_BRANCH}"
+#DEPEND=">=mate-base/mate-common-${MATE_BRANCH}"
 
 # @FUNCTION: mate_py_cond_func_wrap
 # @DESCRIPTION:
