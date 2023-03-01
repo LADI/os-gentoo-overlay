@@ -17,6 +17,8 @@ SLOT="0"
 
 IUSE="accountsservice appindicator debug nls polkit"
 
+DEPEND=">=mate-base/mate-common-1.26.0"
+
 COMMON_DEPEND="
 	|| (
 		>=app-accessibility/at-spi2-core-2.46.0:2
