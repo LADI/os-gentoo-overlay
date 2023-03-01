@@ -1,0 +1,86 @@
+commit 82dca28764e4b7e74c619fac9ce58dfb58b6bd9f
+Author: Nedko Arnaudov <nedko@nedk.org>
+Date:   Wed Mar 1 14:22:17 2023 +0200
+
+    autotools: make polkit dependency optional
+
+diff --git a/capplets/Makefile.am b/capplets/Makefile.am
+index fba5739..3400d56 100644
+--- a/capplets/Makefile.am
++++ b/capplets/Makefile.am
+@@ -8,7 +8,6 @@ SUBDIRS = \
+ 	keybindings \
+ 	mouse \
+ 	network \
+-	time-admin \
+ 	windows \
+ 	about-me
+ 
+@@ -21,9 +20,13 @@ DIST_SUBDIRS = \
+ 	keyboard \
+ 	mouse \
+ 	network \
+-	time-admin \
+ 	windows \
+ 	display \
+ 	about-me
+ 
++if HAVE_POLKIT
++SUBDIRS += time-admin
++DIST_SUBDIRS += time-admin
++endif
++
+ -include $(top_srcdir)/git.mk
+diff --git a/configure.ac b/configure.ac
+index 6b67d78..73b5aeb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -118,6 +118,32 @@ CPPFLAGS=$savecppflags
+ 
+ AC_CHECK_LIB(m, floor)
+ 
++dnl polkit
++POLKIT_PKG=polkit-gobject-1
++
++AC_ARG_ENABLE(polkit,
++  AS_HELP_STRING([--enable-polkit[=@<:@no/auto/yes@:>@]],[Build support for polkit ]),
++  [enable_polkit=$enableval],
++  [enable_polkit="auto"])
++
++if test x$enable_polkit = xauto ; then
++  echo "Checking for polkit... (auto)"
++  PKG_CHECK_EXISTS([$POLKIT_PKG],
++                   enable_polkit="yes",
++                   enable_polkit="no")
++fi
++
++if test x$enable_polkit = xyes ; then
++  echo "Checking for polkit... (yes)"
++  PKG_CHECK_EXISTS([$POLKIT_PKG],,
++    AC_MSG_ERROR([polkit is not installed]))
++  PKG_CHECK_MODULES(POLKIT, $POLKIT_PKG)
++  AC_SUBST(POLKIT_CFLAGS)
++  AC_SUBST(POLKIT_LIBS)
++  AC_DEFINE(HAVE_POLKIT, 1, [Have Polkit])
++fi
++AM_CONDITIONAL(HAVE_POLKIT, test x"$enable_polkit" = xyes)
++
+ dnl ==============================================
+ dnl Check that we meet the  dependencies
+ dnl ==============================================
+@@ -135,7 +161,6 @@ PKG_CHECK_MODULES(CAPPLET, $COMMON_MODULES)
+ PKG_CHECK_MODULES(MATECC, $COMMON_MODULES libmate-menu >= 1.21.0)
+ PKG_CHECK_MODULES(MATECC_SHELL, $COMMON_MODULES libmate-menu)
+ 
+-PKG_CHECK_MODULES(POLKIT, polkit-gobject-1)
+ PKG_CHECK_MODULES(MATE_DESKTOP, mate-desktop-2.0 >= $MATE_DESKTOP_REQUIRED)
+ PKG_CHECK_MODULES(DEFAULT_APPLICATIONS_CAPPLET, libxml-2.0)
+ PKG_CHECK_MODULES(MARCO, libmarco-private >= $MARCO_REQUIRED)
+@@ -324,6 +349,7 @@ Configure summary:
+ 
+         Appindicator:              ${enable_appindicator}
+         Libmate-slab:              ${have_libmateslab}
++        PolKit:                    ${enable_polkit}
+         Accountsservice:           ${have_accountsservice}
+         Native Language support:   ${USE_NLS}
+ "

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ DESCRIPTION="The MATE Desktop configuration tool"
 LICENSE="FDL-1.1+ GPL-2+ LGPL-2+ LGPL-2.1+ HPND"
 SLOT="0"
 
-IUSE="accountsservice appindicator debug nls"
+IUSE="accountsservice appindicator debug nls polkit"
 
 COMMON_DEPEND="
 	|| (
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	>=media-libs/fontconfig-1:1.0
 	media-libs/freetype:2
 	media-libs/libcanberra:0[gtk3]
-	sys-auth/polkit[introspection]
+	polkit? ( sys-auth/polkit[introspection] )
 	x11-apps/xmodmap
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
@@ -63,6 +63,10 @@ BDEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/polkit-optional.patch
+)
 
 src_configure() {
 	mate_src_configure \
