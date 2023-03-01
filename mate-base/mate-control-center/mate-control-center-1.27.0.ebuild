@@ -15,7 +15,7 @@ DESCRIPTION="The MATE Desktop configuration tool"
 LICENSE="FDL-1.1+ GPL-2+ LGPL-2+ LGPL-2.1+ HPND"
 SLOT="0"
 
-IUSE="accountsservice appindicator debug nls polkit"
+IUSE="accountsservice appindicator debug nls policykit"
 
 COMMON_DEPEND="
 	|| (
@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	>=media-libs/fontconfig-1:1.0
 	media-libs/freetype:2
 	media-libs/libcanberra:0[gtk3]
-	polkit? ( sys-auth/polkit[introspection] )
+	policykit? ( sys-auth/polkit[introspection] )
 	x11-apps/xmodmap
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
@@ -72,6 +72,7 @@ PATCHES=(
 src_configure() {
 	mate_src_configure \
 		--disable-update-mimedb \
+		$(use_enable policykit polkit) \
 		$(use_enable appindicator) \
 		$(use_enable nls) \
 		$(use_enable debug)
