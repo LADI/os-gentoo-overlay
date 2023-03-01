@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,7 @@ IUSE="startup-notification test xinerama"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	>=mate-base/mate-common-1.26.0
 	dev-libs/atk
 	>=dev-libs/glib-2.58:2
 	>=gnome-base/libgtop-2:2=
