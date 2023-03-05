@@ -15,7 +15,7 @@ DESCRIPTION="Caja file manager for the MATE desktop"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 
-IUSE="+introspection +mate nls xmp"
+IUSE="+introspection +mate nls xmp udisks"
 
 COMMON_DEPEND="
 	|| (
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.58.1:2
 	>=dev-libs/libxml2-2.4.7:2
 	gnome-base/dconf
-	>=gnome-base/gvfs-1.10.1:0[udisks]
+	udisks? ( >=gnome-base/gvfs-1.10.1:0[udisks] )
 	>=mate-base/mate-desktop-1.17.3:0
 	>=media-libs/libexif-0.6.14:0
 	virtual/libintl
