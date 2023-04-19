@@ -1,4 +1,4 @@
-== nextstable: MMM DD, YY (20ZZ)
+== newstable: Apr 19, 53 (2023)
 
  * new: asciidoc-9999.ebuild
 
@@ -10,6 +10,18 @@
 
  * qmidiarp-0.6.5.ebuild updated to EAPI=8
  * new: qmidiarp-9999.ebuild
+
+ * upd: media-sound/jackdbus
+
+ ** jackdbus-2.22.1.ebuild
+ *** Restore git revision display in the log file
+
+ * upd: media-sound/ladish
+
+ ** ladish-1-r3.ebuild & ladish-1.9999.ebuild
+ *** ladish_control: fix py3 exception handling
+ ** ladish-9999.ebuild
+ *** remove (stable) keywords
 
 == newebuild: Feb 18, 53 (2023)
 
