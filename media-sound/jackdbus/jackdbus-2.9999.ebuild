@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
-inherit flag-o-matic python-single-r1 waf-utils multilib-minimal
+inherit flag-o-matic python-single-r1 waf-utils
 inherit git-r3
 
 EGIT_REPO_URI="https://github.com/LADI/${PN}.git"
@@ -23,7 +23,7 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	sys-apps/dbus[${MULTILIB_USEDEP}]"
+	sys-apps/dbus"
 RDEPEND="
 	${DEPEND}
 	${PYTHON_DEPS}
@@ -39,14 +39,7 @@ PDEPEND=""
 
 DOCS=( AUTHORS NEWS.rst README.adoc )
 
-src_prepare() {
-	default
-
-	python_fix_shebang waf
-	multilib_copy_sources
-}
-
-multilib_src_configure() {
+src_configure() {
 	# clients crash if built with lto
 	# https://github.com/jackaudio/jack2/issues/485
 	filter-lto
@@ -58,14 +51,10 @@ multilib_src_configure() {
 	waf-utils_src_configure "${wafargs[@]}"
 }
 
-multilib_src_compile() {
+src_compile() {
 	waf-utils_src_compile
 }
 
-multilib_src_install() {
+src_install() {
 	waf-utils_src_install
-}
-
-multilib_src_install_all() {
-	python_fix_shebang "${ED}"/usr/bin/jack_control
 }

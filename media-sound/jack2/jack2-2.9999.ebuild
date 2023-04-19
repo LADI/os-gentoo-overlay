@@ -43,13 +43,6 @@ DOCS=( AUTHORS.rst NEWS.rst README.rst README_NETJACK2 )
 
 PATCHES=( )
 
-src_prepare() {
-	default
-
-	python_fix_shebang waf
-#	copy_sources
-}
-
 src_configure() {
 	# clients crash if built with lto
 	# https://github.com/jackaudio/jack2/issues/485
