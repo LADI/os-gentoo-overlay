@@ -67,7 +67,6 @@ src_configure() {
 src_install() {
 	use doc && HTML_DOCS="${S}/build/default/html/*"
 	waf-utils_src_install
-	python_fix_shebang "${ED}"
 }
 
 pkg_postinst() {
