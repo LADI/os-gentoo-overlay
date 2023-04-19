@@ -58,5 +58,4 @@ src_compile() {
 
 src_install() {
 	waf-utils_src_install
-	python_fix_shebang "${ED}"/usr/bin/jack_control
 }
