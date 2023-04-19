@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{6,7,8,9,10,11} )
 PYTHON_REQ_USE='threads(+)'
@@ -14,7 +14,7 @@ inherit git-r3
 EGIT_REPO_URI="https://github.com/LADI/ladish.git"
 EGIT_BRANCH="1-stable"
 EGIT_COMMIT=b5d21e1829c2a85ee6984af20da9b172e9bdb50f
-KEYWORDS=""
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 EGIT_SUBMODULES=()
 
 LICENSE="GPL-2"
