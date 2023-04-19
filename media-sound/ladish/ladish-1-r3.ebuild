@@ -12,8 +12,9 @@ DESCRIPTION="LADI Session Handler - a session management system for JACK applica
 HOMEPAGE="https://ladish.org"
 inherit git-r3
 EGIT_REPO_URI="https://github.com/LADI/ladish.git"
-EGIT_BRANCH="main"
-KEYWORDS=""
+EGIT_BRANCH="1-stable"
+EGIT_COMMIT=b5d21e1829c2a85ee6984af20da9b172e9bdb50f
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 EGIT_SUBMODULES=()
 
 LICENSE="GPL-2"
