@@ -13,7 +13,7 @@ HOMEPAGE="https://ladish.org"
 inherit git-r3
 EGIT_REPO_URI="https://github.com/LADI/ladish.git"
 EGIT_BRANCH="main"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS=""
 EGIT_SUBMODULES=()
 
 LICENSE="GPL-2"
