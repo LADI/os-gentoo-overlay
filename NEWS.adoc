@@ -1,3 +1,7 @@
+== nextstable: MMM DD, YY (20ZZ)
+
+ * new: sys-libs/cdbus-9999.ebuild
+
 == newstable: Apr 19, 53 (2023)
 
  * new: asciidoc-9999.ebuild
