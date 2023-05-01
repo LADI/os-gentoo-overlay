@@ -13,7 +13,7 @@ HOMEPAGE="https://ladish.org"
 inherit git-r3
 EGIT_REPO_URI="https://github.com/LADI/ladish.git"
 EGIT_BRANCH="1-stable"
-EGIT_COMMIT=b5d21e1829c2a85ee6984af20da9b172e9bdb50f
+EGIT_COMMIT=7728d2d40e1c8eeb84b8605a411d9a83701d48b3
 KEYWORDS=""
 EGIT_SUBMODULES=()
 
@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 	>=media-sound/jack2-2.21.0
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS README NEWS )
+DOCS=( AUTHORS README.adoc NEWS )
 
 PATCHES=(
 )
