@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 	>=media-sound/jack2-2.21.0
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS README NEWS )
+DOCS=( AUTHORS README.adoc NEWS )
 
 PATCHES=(
 )
