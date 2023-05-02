@@ -9,14 +9,10 @@ DESCRIPTION="JACK audio mixer with GTK interface."
 HOMEPAGE="https://rdio.space/jackmixer/"
 LICENSE="GPL-2"
 
-#SRC_URI="https://rdio.space/jackmixer/tarballs/${P}.tar.xz"
-#RESTRICT="mirror"
-
 EGIT_REPO_URI="https://github.com/LADI/jack_mixer.git"
 EGIT_BRANCH="main"
-EGIT_COMMIT=b71543b57d319b0a7d6c54d705ff6cc8e1c0b4e9
 
-KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 SLOT="0"
 
@@ -29,7 +25,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/cython
 	dev-python/pygobject
 	dev-python/pycairo
-	dev-python/pyxdg"
+	dev-python/appdirs"
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README.md CHANGELOG.md )
