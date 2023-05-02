@@ -2,6 +2,19 @@
 
  * new: sys-libs/cdbus-9999.ebuild
 
+== newstable: May 2, 53 (2023)
+
+ * Python 3.11 updates
+
+ ** upd: media-sound/jack_mixer-17
+ ** new: media-sound/jack_mixer-9999
+
+ * upd ladish:
+
+ ** new: media-sound/ladish-1_p20230501
+ ** del: media-sound/ladish-1-r3
+ ** upstream update of README and its rename to README.adoc
+
 == newstable: Apr 19, 53 (2023)
 
  * new: asciidoc-9999.ebuild
