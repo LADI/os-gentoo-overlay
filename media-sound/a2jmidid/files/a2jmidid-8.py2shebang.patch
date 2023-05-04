@@ -1,0 +1,10 @@
+diff --git a/a2j_control b/a2j_control
+index 10b2db7..f86c17c 100755
+--- a/a2j_control
++++ b/a2j_control
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ name_base = 'org.gna.home.a2jmidid'
+ control_interface_name = name_base + '.control'

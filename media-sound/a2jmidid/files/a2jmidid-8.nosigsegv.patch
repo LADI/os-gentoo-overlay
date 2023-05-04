@@ -1,0 +1,33 @@
+diff --git a/a2jmidid.c b/a2jmidid.c
+index 7d46e87..fabe851 100644
+--- a/a2jmidid.c
++++ b/a2jmidid.c
+@@ -513,11 +513,11 @@ main(
+     a2j_info("");
+   }
+ 
+-  /* setup our SIGSEGV magic that prints nice stack in our logfile */ 
+-  if (dbus)
+-  {
+-    setup_sigsegv();
+-  }
++  /* setup our SIGSEGV magic that prints nice stack in our logfile */
++  /* if (dbus) */
++  /* { */
++  /*   setup_sigsegv(); */
++  /* } */
+ 
+   signal(SIGINT, &a2j_sigint_handler);
+   signal(SIGTERM, &a2j_sigint_handler);
+diff --git a/wscript b/wscript
+index 664625b..8b53a46 100644
+--- a/wscript
++++ b/wscript
+@@ -148,7 +148,6 @@ def build(bld):
+         prog.source.append('dbus.c')
+         prog.source.append('dbus_iface_introspectable.c')
+         prog.source.append('dbus_iface_control.c')
+-        prog.source.append('sigsegv.c')
+ 
+     prog.includes = '.' # make waf dependency tracking work
+     prog.target = 'a2jmidid'
