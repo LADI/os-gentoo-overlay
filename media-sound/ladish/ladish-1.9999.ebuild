@@ -13,7 +13,6 @@ HOMEPAGE="https://ladish.org"
 inherit git-r3
 EGIT_REPO_URI="https://github.com/LADI/ladish.git"
 EGIT_BRANCH="1-stable"
-EGIT_COMMIT=7728d2d40e1c8eeb84b8605a411d9a83701d48b3
 KEYWORDS=""
 EGIT_SUBMODULES=()
 
