@@ -15,7 +15,7 @@ EGIT_COMMIT="c097aa5a38888e1b068a42e32764b823c18084ee"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 DESCRIPTION="D-Bus endpoint for JACK server"
-HOMEPAGE="https://ladish.org/jackdbus.html"
+HOMEPAGE="https://jackdbus.ladish.org/"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="2"
