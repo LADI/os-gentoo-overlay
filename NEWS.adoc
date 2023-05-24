@@ -2,6 +2,20 @@
 
  * new: sys-libs/cdbus-9999.ebuild
 
+ * upd: media-sound/ladish
+
+ ** 1.9999&9999: follow README update and its rename to README.adoc
+ ** 1.9999: follow latest 1-stable branch (instead of fixed commit)
+
+ * new: media-sound/jack_mixer
+
+   Bring back ebuilds for older versions of jack_mixer,
+   11, 12, 13. Also version 8 (py2 only).
+
+ * upd: media-sound/jackdbus: adjust homepage URL
+
+ * new: media-libs/lsp-plugins-1.2.7
+
 == newstable: May 2, 53 (2023)
 
  * Python 3.11 updates
