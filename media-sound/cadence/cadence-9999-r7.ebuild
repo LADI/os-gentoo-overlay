@@ -17,7 +17,7 @@ IUSE="pulseaudio a2jmidid ladish opengl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	media-sound/jack2[dbus]
+	media-sound/jackdbus
 	$(python_gen_cond_dep 'dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/dbus-python[${PYTHON_USEDEP}]')
 	a2jmidid? ( media-sound/a2jmidid[dbus] )
