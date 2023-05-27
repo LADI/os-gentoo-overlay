@@ -13,7 +13,7 @@ KEYWORDS=""
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="pulseaudio a2jmidid ladish opengl"
+IUSE="pulseaudio +a2jmidid +ladish opengl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
