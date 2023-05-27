@@ -21,7 +21,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/dbus-python[${PYTHON_USEDEP}]')
 	a2jmidid? ( media-sound/a2jmidid[dbus] )
-	ladish? ( >=media-sound/ladish-9999 )
+	ladish? ( media-sound/ladish )
 	pulseaudio? ( media-sound/pulseaudio[jack] )"
 DEPEND=${RDEPEND}
 
