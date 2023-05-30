@@ -11,7 +11,9 @@ HOMEPAGE="https://github.com/surfacepatterns/synthclone https://gitea.ladish.org
 EGIT_REPO_URI="https://gitea.ladish.org/LADI/synthclone"
 EGIT_BRANCH="main"
 #EGIT_COMMIT=36fa0fd867a9df9802d361b3ee9dbcac7bfcbc63
-EGIT_SUBMODULES=()
+
+# this is doc? actually
+EGIT_SUBMODULES=( doc/doxygen-awesome-css )
 
 KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 LICENSE="LGPL-2.1+ GPL-2+ portmedia? ( MIT )"
@@ -40,11 +42,6 @@ RDEPEND="${PYTHON_DEPS}
 	renoise? ( dev-libs/libzip )
 	doc? ( app-doc/doxygen )"
 DEPEND=${RDEPEND}
-
-src_prepare() {
-	use doc && EGIT_SUBMODULES+=(doc/doxygen-awesome-css )
-	default
-}
 
 src_configure() {
 	local args=( --prefix="/usr" )
