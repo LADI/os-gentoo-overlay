@@ -25,6 +25,10 @@ RDEPEND="${PYTHON_DEPS}
 	pulseaudio? ( media-sound/pulseaudio[jack] )"
 DEPEND=${RDEPEND}
 
+PATCHES=(
+	"${FILESDIR}"/cadence-bug361.patch
+)
+
 src_prepare() {
 	sed -i -e "s/python3/${EPYTHON}/" \
 		data/cadence \
