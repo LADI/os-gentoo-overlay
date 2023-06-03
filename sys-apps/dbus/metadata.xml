@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Nedko Arnaudov</name>
+		<irc><nick>nedko</nick><network>libera.chat</network></irc>
+	</maintainer>
+	<maintainer type="project">
+		<name>LADI project, #ladi on libera.chat</name>
+		<irc><channel>#ladi</channel><network>libera.chat</network></irc>
+	</maintainer>
+	<use>
+		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking.</flag>
+		<flag name="systemd">Build with <pkg>sys-apps/systemd</pkg> at_console support</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:freedesktop:dbus</remote-id>
+	</upstream>
+	<upstream>
+		<remote-id type="github">LADI/dbus</remote-id>
+	</upstream>
+</pkgmetadata>
