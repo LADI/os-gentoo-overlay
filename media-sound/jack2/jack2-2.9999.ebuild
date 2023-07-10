@@ -43,12 +43,13 @@ DOCS=( AUTHORS.rst NEWS.rst README.rst README_NETJACK2 )
 
 PATCHES=( )
 
-multilib_src_configure() {
+src_prepare() {
 	default
 
 #	python_fix_shebang waf
 	multilib_copy_sources
 
+multilib_src_configure() {
 	# clients crash if built with lto
 	# https://github.com/jackaudio/jack2/issues/485
 	filter-lto
