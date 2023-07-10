@@ -81,5 +81,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
+	git config --global --add safe.directory \
+		"$(cd "${out_dir}" && echo "${PWD}")" || die
 	waf-utils_src_install
 }
