@@ -48,6 +48,7 @@ src_prepare() {
 
 #	python_fix_shebang waf
 	multilib_copy_sources
+}
 
 multilib_src_configure() {
 	# clients crash if built with lto
