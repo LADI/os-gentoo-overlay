@@ -46,7 +46,7 @@ PATCHES=( )
 multilib_src_configure() {
 	default
 
-	python_fix_shebang waf
+#	python_fix_shebang waf
 	multilib_copy_sources
 
 	# clients crash if built with lto
