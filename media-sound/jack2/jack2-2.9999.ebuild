@@ -46,7 +46,9 @@ PATCHES=( )
 src_prepare() {
 	default
 
-#	python_fix_shebang waf
+	# changing waf shebang in-tree causes git state to be dirty
+	#python_fix_shebang waf
+
 	multilib_copy_sources
 }
 
