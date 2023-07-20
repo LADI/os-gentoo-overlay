@@ -23,8 +23,9 @@ RESTRICT="mirror"
 IUSE="debug doc lash gtk"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+#	media-sound/jackdbus
 RDEPEND="media-libs/alsa-lib
-	media-sound/jackdbus
+	>=media-sound/jack-audio-connection-kit-1.121.4
 	sys-apps/dbus
 	dev-libs/expat
 	lash? ( !media-sound/lash )
@@ -36,9 +37,10 @@ RDEPEND="media-libs/alsa-lib
 		>=dev-cpp/libgnomecanvasmm-2.6.0
 	)
 	${PYTHON_DEPS}"
+#	>=media-sound/jack2-2.21.0
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
-	>=media-sound/jack2-2.21.0
+	>=media-sound/jack-audio-connection-kit-1.121.4
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS README.adoc NEWS )
