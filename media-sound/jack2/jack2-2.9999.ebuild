@@ -49,7 +49,7 @@ src_configure() {
 	filter-lto
 
 	local wafargs=(
-		--mandir="${EPREFIX}"/usr/share/man/man1 # override eclass' for man1
+#		--mandir="${EPREFIX}"/usr/share/man/man1 # override eclass' for man1
 
 		--alsa=$(usex alsa)
 		--celt=no
@@ -60,7 +60,6 @@ src_configure() {
 		--opus=$(usex opus)
 		--portaudio=no
 		--samplerate=$(usex libsamplerate)
-		--systemd=no
 		--winmme=no
 	)
 
