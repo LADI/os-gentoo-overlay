@@ -44,7 +44,7 @@ RDEPEND="
 	!media-sound/jack-example-tools"
 DEPEND="${RDEPEND}"
 
-DOCS=( CHANGELOG.md README.md )
+DOCS=( NEWS.md README.md )
 
 src_configure() {
 	local emesonargs=(
