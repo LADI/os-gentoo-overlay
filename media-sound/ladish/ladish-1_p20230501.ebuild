@@ -13,7 +13,8 @@ HOMEPAGE="https://ladish.org"
 inherit git-r3
 EGIT_REPO_URI="https://github.com/LADI/ladish.git"
 EGIT_BRANCH="1-stable"
-KEYWORDS=""
+EGIT_COMMIT=7728d2d40e1c8eeb84b8605a411d9a83701d48b3
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 EGIT_SUBMODULES=()
 
 LICENSE="GPL-2"
@@ -25,8 +26,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 #	media-sound/jackdbus
 RDEPEND="media-libs/alsa-lib
-	virtual/jack
 	sys-apps/dbus
+	>=media-sound/jack-audio-connection-kit-1.121.4
 	dev-libs/expat
 	lash? ( !media-sound/lash )
 	gtk? (
@@ -38,7 +39,6 @@ RDEPEND="media-libs/alsa-lib
 	)
 	${PYTHON_DEPS}"
 #	>=media-sound/jack2-2.21.0
-#	>=media-sound/jack-audio-connection-kit-1.121.4
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	>=media-sound/jack-audio-connection-kit-1.121.4

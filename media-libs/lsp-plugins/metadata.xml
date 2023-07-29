@@ -9,4 +9,15 @@
     <name>LADI project, #ladi on libera.chat</name>
     <irc><channel>#ladi</channel><network>libera.chat</network></irc>
   </maintainer>
+  <longdescription lang="en">
+    LSP (Linux Studio Plugins) is a collection of open-source plugins
+    currently compatible with LADSPA, LV2 and LinuxVST formats.
+  </longdescription>
+  <use>
+    <flag name="lv2">Build lv2 plugins</flag>
+    <flag name="vst">Support LinuxVST plugins</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">sadko4u/lsp-plugins</remote-id>
+  </upstream>
 </pkgmetadata>

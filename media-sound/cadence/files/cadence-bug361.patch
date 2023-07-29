@@ -1,0 +1,24 @@
+commit 556859c0af71ec5d7346dda98acafe70e8a65f7d
+Author: Nedko Arnaudov <nedko@nedk.org>
+Date:   Thu Jun 1 17:41:26 2023 +0300
+
+    Switch default for /org/ladish/daemon/terminal to xterm
+    
+    x-terminal-emulator, while good in theory is debian specific.
+    xterm, OTOH is ubiquitous and minimal.
+    
+    Fix for https://github.com/falkTX/Cadence/issues/361
+
+diff --git a/src/shared_settings.py b/src/shared_settings.py
+index 19412d6..2cb2f8a 100644
+--- a/src/shared_settings.py
++++ b/src/shared_settings.py
+@@ -56,7 +56,7 @@ LADISH_CONF_KEY_DAEMON_JS_SAVE_DELAY    = "/org/ladish/daemon/js_save_delay"
+ # LADISH defaults
+ LADISH_CONF_KEY_DAEMON_NOTIFY_DEFAULT           = True
+ LADISH_CONF_KEY_DAEMON_SHELL_DEFAULT            = "sh"
+-LADISH_CONF_KEY_DAEMON_TERMINAL_DEFAULT         = "x-terminal-emulator"
++LADISH_CONF_KEY_DAEMON_TERMINAL_DEFAULT         = "xterm"
+ LADISH_CONF_KEY_DAEMON_STUDIO_AUTOSTART_DEFAULT = True
+ LADISH_CONF_KEY_DAEMON_JS_SAVE_DELAY_DEFAULT    = 0
+ 

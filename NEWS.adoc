@@ -1,0 +1,131 @@
+== nextstable: MMM DD, YY (20ZZ)
+
+ * new: sys-libs/cdbus-9999.ebuild
+
+ * upd: media-sound/ladish
+
+ ** 1.9999&9999: follow README update and its rename to README.adoc
+ ** 1.9999: follow latest 1-stable branch (instead of fixed commit)
+
+ * new: media-sound/jack_mixer +
+   Bring back ebuilds for older versions of jack_mixer,
+   11, 12, 13. Also version 8 (py2 only).
+
+ * upd: media-sound/jackdbus: adjust homepage URL
+
+ * new: media-libs/lsp-plugins-1.2.7
+
+== newstable: May 2, 53 (2023)
+
+ * Python 3.11 updates
+
+ ** upd: media-sound/jack_mixer-17
+ ** new: media-sound/jack_mixer-9999
+
+ * upd ladish:
+
+ ** new: media-sound/ladish-1_p20230501
+ ** del: media-sound/ladish-1-r3
+ ** upstream update of README and its rename to README.adoc
+
+== newstable: Apr 19, 53 (2023)
+
+ * new: asciidoc-9999.ebuild +
+   This ebuild provides ladoc-py variant of asciidoc
+   Two modifications against upstream asciidoc-py are maintained:
+
+ ** Support for docinfo-header.html
+ ** ladi theme
+
+ * qmidiarp-0.6.5.ebuild updated to EAPI=8
+ * new: qmidiarp-9999.ebuild
+
+ * upd: media-sound/jackdbus
+
+ ** jackdbus-2.22.1.ebuild
+ *** Restore git revision display in the log file
+
+ * upd: media-sound/ladish
+
+ ** ladish-1-r3.ebuild & ladish-1.9999.ebuild
+ *** ladish_control: fix py3 exception handling
+ ** ladish-9999.ebuild
+ *** remove (stable) keywords
+
+== newebuild: Feb 18, 53 (2023)
+
+ * new: jack2-2.22.1.ebuild
+
+ ** jack_get_version_string() now reports GIT_VERSION
+ ** Change default of self-connect-mode to 'e'
+
+== newstable: Feb 09, 53 (2023)
+
+ * new: dev-lang/faust
+
+ ** faust-2.41.1.ebuild
+
+ * new: media-plugins/x42-plugins
+ ** x42-plugins-99999999.ebuild
+
+ * new: media-sound/gmidimonitor
+
+ ** gmidimonitor-9999.ebuild
+
+ * upd: media-sound/jack2
+
+ ** jack2-2.21.0.ebuild
+ ** jack2-2.22.0.ebuild
+ ** jack2-2.9999.ebuild
+ ** git src url adjusted to github.com/LADI one, git.nedk.org is down
+ ** jack2-2.x codebase incorporates jackaudio.org jack2-1.9.x codebase.
+    For LADIOS, media-sound/jack2 is now jack2-2.x, the ladi-jack2 variants
+ ** jackdbus is now packaged as media-sound/jackdbus
+ ** media-sound/jack2 does not install jack server frontends (jackdbus, jackd) anymore
+
+ * new: media-sound/jackdbus
+
+ ** jackdbus-2.21.0.ebuild
+ ** jackdbus-2.9999.ebuild
+
+ * upd: media-sound/ladish
+ ** ladish-1.9999.ebuild
+ ** ladish-9999.ebuild
+ ** updated ladish ebuilds now depends on ladi-jack2
+ ** git src url adjusted to github.com/LADI one, git.nedk.org is down
+
+== newebuild: Jan 26, 53 (2023)
+
+ * A jack_mixer-17.ebuild
+
+== updebuild: Jan 05, 53 (2023)
+
+ * Set ladish git repo to github one
+ * media-sound/ladish: add 3.10 and 3.11 to PYTHON_COMPAT
+ * Add dev-cpp/libgnomecanvasmm
+   Copied from main gentoo portage tree where it was removed.
+   Gentoo Bug #808375
+
+== updebuild: Sep 03, 52 (2022)
+
+ * Fix media-sound/ladish maintainer in LADI overlay to match reality
+
+== newebuild: Dec 25, 51 (2021)
+
+Initial ladi51 repository
+
+Upstream provides updates for the release 1
+by pushing commits to the git branch named 1-stable
+
+These commits are expected to not break
+any API, ABI or user interface.
+
+Intended uses of such commits are to adjust the codebase for
+new hardware and new dependencies.
+
+Downstream packagers that need more stability for their deployments
+can use date-based tags in their local git mirros.
+
+* Add ladish-1.9999 (upstream 1-stable git branch)
+** Import ladish ebuilds from audio-overlay
+** Restore gladish build, remove obsolete ebuild

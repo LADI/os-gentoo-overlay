@@ -9,4 +9,8 @@
     <name>LADI project, #ladi on libera.chat</name>
     <irc><channel>#ladi</channel><network>libera.chat</network></irc>
   </maintainer>
+  <upstream>
+    <remote-id type="github">LADI/ladoc-py</remote-id>
+    <bugs-to>https://github.com/LADI/ladoc-py/issues</bugs-to>
+  </upstream>
 </pkgmetadata>

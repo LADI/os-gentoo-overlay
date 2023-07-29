@@ -9,4 +9,11 @@
     <name>LADI project, #ladi on libera.chat</name>
     <irc><channel>#ladi</channel><network>libera.chat</network></irc>
   </maintainer>
+  <use>
+    <flag name="jack">JACK sampler plugin (standalone)</flag>
+    <flag name="lv2">LV2 plugin</flag>
+    <flag name="h2">Hydrogen plugin</flag>
+    <flag name="renoise">Renoise plugin</flag>
+    <flag name="portmedia">Portmedia sampler plugin</flag>
+  </use>
 </pkgmetadata>

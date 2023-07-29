@@ -1,25 +1,19 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{6,7,8,9,10} )
+PYTHON_COMPAT=( python3_{6,7,8,9,10,11} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit flag-o-matic python-single-r1 waf-utils
+inherit flag-o-matic python-single-r1 waf-utils xdg-utils
 
 DESCRIPTION="LADI Session Handler - a session management system for JACK applications"
 HOMEPAGE="https://ladish.org"
-if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.nedk.org/lad/ladish.git"
-	KEYWORDS=""
-else
-	inherit vcs-snapshot
-	SRC_URI="https://github.com/LADI/ladish/archive/${P}.tar.gz
-		https://git.nedk.org/lad/ladish.git/plain/waf -> ${P}-waf-2.0.22"
-	KEYWORDS="~amd64"
-fi
+inherit git-r3
+EGIT_REPO_URI="https://github.com/LADI/ladish.git"
+EGIT_BRANCH="main"
+KEYWORDS=""
 EGIT_SUBMODULES=()
 
 LICENSE="GPL-2"
@@ -30,7 +24,7 @@ IUSE="debug doc lash gtk"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="media-libs/alsa-lib
-	media-sound/jack2[dbus]
+	media-sound/jackdbus
 	sys-apps/dbus
 	dev-libs/expat
 	lash? ( !media-sound/lash )
@@ -44,17 +38,16 @@ RDEPEND="media-libs/alsa-lib
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
+	>=media-sound/jack2-2.21.0
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS README NEWS )
+DOCS=( AUTHORS README.adoc NEWS )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-configure-gladish.patch"
 )
 
 src_prepare()
 {
-	sed -i -e "s/RELEASE = False/RELEASE = True/" wscript
 	append-cxxflags '-std=c++11'
 	default
 }
@@ -73,5 +66,12 @@ src_configure() {
 src_install() {
 	use doc && HTML_DOCS="${S}/build/default/html/*"
 	waf-utils_src_install
-	python_fix_shebang "${ED}"
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
