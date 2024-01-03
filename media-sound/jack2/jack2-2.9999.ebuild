@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit git-r3
 
 EGIT_REPO_URI="https://github.com/LADI/jack2.git"
 EGIT_BRANCH="main"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 DESCRIPTION="LADI JACK2 is version of the jackdmp, a C++ version of the JACK low-latency audio server for multi-processor machines."
 HOMEPAGE="https://github.com/LADI/jack2"
