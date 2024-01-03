@@ -13,7 +13,34 @@
 
  * upd: media-sound/jackdbus: adjust homepage URL
 
- * new: media-libs/lsp-plugins-1.2.7
+ * new: media-libs/lsp-plugins
+ ** 1.2.7: upstream version bump
+ ** 1.2.8: upstream version bump
+
+ * new: media-sound/cadence-9999-r7
+ ** Import from audio-overlay
+ ** Adjust for media-sound/jackdbus
+ ** Extend PYTHON_COMPAT for 3.11 and 3.12
+ ** Relax media-sound/ladish dependency constraint
+ ** Make ladish and a2jmidid use flags enabled by default
+ ** Adjust HOMEPAGE to kx.studio domain
+ ** Switch default for /org/ladish/daemon/terminal to xterm
+
+ * new: media-sound/synthclone-9999-r1.ebuild
+
+ * new: sys-apps/dbus
+ ** dbus-1.15.6.1.ebuild & dbus-1.15.9999-r1.ebuild from git branch ladi-dbus-1.15
+ ** This modification reverts unix abstract socket code removal in dbus upstream
+
+ * new: media-sound/jack-audio-connection-kit: new ladi-jack 1.9999 ebuild
+
+ * new: media-sound/jack2: add a 2.23.1.ebuild (from tarball)
+
+ * upd: media-sound/jack2:
+ ** 2.9999: adjust for latest ladi-jack2
+ ** 2.9999: mask stable arches so that 2.23.1 ebuild gets into effect by default
+
+ * new: media-sound/jack-tools-9999.ebuild: LADI version of media-sound/jack-example-tools
 
 == newstable: May 2, 53 (2023)
 
