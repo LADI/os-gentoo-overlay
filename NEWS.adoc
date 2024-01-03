@@ -9,7 +9,7 @@
 
  * new: media-sound/jack_mixer +
    Bring back ebuilds for older versions of jack_mixer,
-   11, 12, 13. Also version 8 (py2 only).
+   11, 12, 13 & 18. Also version 8 (py2 only).
 
  * upd: media-sound/jackdbus: adjust homepage URL
 
