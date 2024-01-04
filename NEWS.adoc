@@ -42,6 +42,8 @@
 
  * new: media-sound/jack-tools-9999.ebuild: LADI version of media-sound/jack-example-tools
 
+ * new: media-sound/catroof
+
 == newstable: May 2, 53 (2023)
 
  * Python 3.11 updates
