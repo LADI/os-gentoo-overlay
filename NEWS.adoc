@@ -44,6 +44,8 @@
 
  * new: media-sound/catroof
 
+ * new: media-sound/geonkick-3.2.0
+
 == newstable: May 2, 53 (2023)
 
  * Python 3.11 updates
