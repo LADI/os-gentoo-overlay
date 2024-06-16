@@ -14,7 +14,8 @@ HOMEPAGE="https://github.com/LADI/jack1"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+#KEYWORDS="amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS=""
 IUSE="cpu_flags_ppc_altivec cpu_flags_x86_3dnow alsa coreaudio doc debug examples oss cpu_flags_x86_sse pam"
 
 # readline: only used for jack_transport -> useless for non native ABIs
