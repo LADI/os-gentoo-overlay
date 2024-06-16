@@ -11,7 +11,8 @@ inherit git-r3
 EGIT_REPO_URI="https://github.com/LADI/${PN}.git"
 EGIT_BRANCH="main"
 
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
+#KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS=""
 
 DESCRIPTION="D-Bus endpoint for JACK server"
 HOMEPAGE="https://jackdbus.ladish.org/"
