@@ -31,8 +31,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 	')
-	!media-sound/jack-audio-connection-kit
-	!media-video/pipewire[jack-sdk(-)]"
+	virtual/jack"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
