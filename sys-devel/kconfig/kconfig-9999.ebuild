@@ -11,11 +11,15 @@ inherit autotools python-single-r1
 DESCRIPTION="Standalone implementation of the Linux Kconfig parser and frontends"
 HOMEPAGE="https://gitlab.com/ymorin/kconfig-frontends"
 
-# LADI prepatched version
-EGIT_REPO_URI="https://codeberg.org/LADI/kconfig"
-inherit git-r3
-
-# https://gitlab.com/ymorin/kconfig-frontends/-/archive/df6a283f24aa146ab862950503db9542a12dab7a/kconfig-frontends-df6a283f24aa146ab862950503db9542a12dab7a.tar.bz2
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.com/ymorin/kconfig-frontends"
+else
+	MY_P="kconfig-frontends-df6a283f24aa146ab862950503db9542a12dab7a" #
+	SRC_URI="https://gitlab.com/ymorin/kconfig-frontends/-/archive/df6a283f24aa146ab862950503db9542a12dab7a/kconfig-frontends-df6a283f24aa146ab862950503db9542a12dab7a.tar.bz2"
+	S="${WORKDIR}/${MY_P}"
+	KEYWORDS="~amd64 ~arm64 ~arm"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -39,9 +43,9 @@ RDEPEND="
 "
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-#PATCHES=(
-#	"${FILESDIR}"/kconfig-frontends-configure-ac-tinfow.patch
-#)
+PATCHES=(
+	"${FILESDIR}"/kconfig-frontends-configure-ac-tinfow.patch
+)
 
 src_prepare() {
 	default

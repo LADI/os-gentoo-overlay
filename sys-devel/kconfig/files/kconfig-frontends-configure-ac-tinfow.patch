@@ -1,0 +1,19 @@
+commit 941339d14f3d827089b51bf57c12dd7eda03c376
+Author: Nedko Arnaudov <nedko@nedk.org>
+Date:   Wed Jul 3 22:46:34 2024 +0300
+
+    configure.ac: prefer -ltinfow over -ltinfo
+
+diff --git a/configure.ac b/configure.ac
+index 150bc50..ea8b7a2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -319,7 +319,7 @@ AS_IF(
+         [ncursesw/*],[ncurses_mconf_CPPFLAGS="$ncurses_mconf_CPPFLAGS -DNCURSES_WIDECHAR=1"])
+      AC_SEARCH_LIBS(
+         [setupterm],
+-        [tinfo],
++        [tinfow tinfo],
+         [break])
+      AC_SEARCH_LIBS(
+         [initscr],
