@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/ymorin/kconfig-frontends"
 else
-	MY_P="kconfig-frontends-df6a283f24aa146ab862950503db9542a12dab7a" #
+	MY_P="kconfig-frontends-df6a283f24aa146ab862950503db9542a12dab7a" # 20170527 (4.11+)
 	SRC_URI="https://gitlab.com/ymorin/kconfig-frontends/-/archive/df6a283f24aa146ab862950503db9542a12dab7a/kconfig-frontends-df6a283f24aa146ab862950503db9542a12dab7a.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~arm64 ~arm"
