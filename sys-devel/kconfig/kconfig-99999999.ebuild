@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit autotools python-single-r1
@@ -18,7 +18,7 @@ else
 	MY_P="kconfig-frontends-df6a283f24aa146ab862950503db9542a12dab7a" # 20170527 (4.11+)
 	SRC_URI="https://gitlab.com/ymorin/kconfig-frontends/-/archive/df6a283f24aa146ab862950503db9542a12dab7a/kconfig-frontends-df6a283f24aa146ab862950503db9542a12dab7a.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~amd64 ~arm64 ~arm"
+	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
 LICENSE="GPL-2"
@@ -31,7 +31,7 @@ DEPEND="
 	dev-util/gperf
 	ncurses? ( sys-libs/ncurses[tinfo] )
 	qt5? (
-		qt-dev/qtcore:5
+		dev-qt/qtcore:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtgui:5
 	)
