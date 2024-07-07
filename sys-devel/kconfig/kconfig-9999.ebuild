@@ -15,8 +15,11 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/ymorin/kconfig-frontends"
 else
-	MY_P="kconfig-frontends-df6a283f24aa146ab862950503db9542a12dab7a" # 20170527 (4.11+)
-	SRC_URI="https://gitlab.com/ymorin/kconfig-frontends/-/archive/df6a283f24aa146ab862950503db9542a12dab7a/kconfig-frontends-df6a283f24aa146ab862950503db9542a12dab7a.tar.bz2"
+	MY_P="kconfig-frontends-${PV}"
+	SRC_URI="https://bitbucket.org/nuttx/tools/downloads/${MY_P}.tar.bz2"
+#	if [[ ${PV} == 4.11.0.1 ]] ; then
+#		SRC_URI="https://gitlab.com/ymorin/kconfig-frontends/-/archive/cc2bad430e271f036afb0c13d68190cf9b96ac54/kconfig-frontends-cc2bad430e271f036afb0c13d68190cf9b96ac54.tar.bz2"
+#	fi
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~arm ~arm64"
 fi
@@ -49,6 +52,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+	rm -v "${S}"/libs/parser/[hly]conf.c
 	eautoreconf
 }
 

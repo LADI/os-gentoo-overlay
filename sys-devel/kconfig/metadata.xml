@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Nedko Arnaudov</name>
+		<irc><nick>nedko</nick><network>libera.chat</network></irc>
+	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">ymorin/kconfig-frontends</remote-id>
+		<remote-id type="bitbucket">nuttx/tools</remote-id>
+	</upstream>
+</pkgmetadata>
