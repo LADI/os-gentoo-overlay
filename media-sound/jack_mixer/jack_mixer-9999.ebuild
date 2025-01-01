@@ -1,6 +1,6 @@
 EAPI=8
 
-PYTHON_COMPAT=( python3_{6..11} )
+PYTHON_COMPAT=( python3_{6..13} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit python-single-r1 meson xdg-utils git-r3
