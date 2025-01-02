@@ -11,7 +11,7 @@ HOMEPAGE="https://gitea.ladish.org/LADI/patchmatrix"
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://gitea.ladish.org/LADI/patchmatrix"
 	EGIT_BRANCH=ladi
-elif [[ ${PF} == ladi-patchmatrix-0.56.1-r1 ]] ; then
+elif [[ ${PF} == ladi-patchmatrix-0.56.1-r2 ]] ; then
 #	MY_P="${P}-gXXXXXXX" # maj.min.patch
 #	SRC_URI="https://dl.ladish.org/ladi-patchmatrix/${MY_P}.tar.xz"
 #	S="${WORKDIR}/${MY_P}"
@@ -33,10 +33,11 @@ SLOT="0"
 IUSE="+ladish"
 
 # jack2[dbus] (or jackdbus+pipewire) is runtime required (but not build time) dependency
-# ladish is optional by recommended runtime required (but not build time) dependency
+# ladish is optional but recommended runtime required (but not build time) dependency
 RDEPEND="${PYTHON_DEPS}
 	media-sound/jackdbus
 	ladish? ( media-sound/ladish )
 "
 DEPEND="sys-apps/dbus
-	sys-libs/cdbus"
+	sys-libs/cdbus
+	media-libs/libglvnd[X]"
