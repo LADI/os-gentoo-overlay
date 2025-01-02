@@ -1,28 +1,37 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{6,7,8,9,10,11} )
+PYTHON_COMPAT=( python3_{6..13} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit python-single-r1 waf-utils git-r3
 
 DESCRIPTION="cdbus - libdbus helper library (in plain C)"
 HOMEPAGE="https://github.com/LADI/cdbus/"
+
 EGIT_REPO_URI="https://github.com/LADI/cdbus.git"
 EGIT_BRANCH="main"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
+
+if [[ ${PF} == cdbus-1.1 ]] ; then
+	# 6530c885844223501535e159db0b073e280b3773=1.1
+	EGIT_COMMIT="6530c885844223501535e159db0b073e280b3773"
+fi
+
+if [[ ${PV} != *9999* ]] ; then
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
+fi
 EGIT_SUBMODULES=()
 
 LICENSE="GPL-2"
 SLOT="0"
-RESTRICT=""
 
 IUSE="debug"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="sys-apps/dbus"
+RDEPEND="sys-apps/dbus
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
