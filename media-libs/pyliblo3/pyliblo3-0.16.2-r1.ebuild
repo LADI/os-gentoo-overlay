@@ -14,6 +14,7 @@ HOMEPAGE="https://gitea.ladish.org/LADI/pyliblo3.git"
 inherit git-r3
 EGIT_REPO_URI="https://gitea.ladish.org/LADI/pyliblo3.git"
 EGIT_BRANCH="main"
+EGIT_COMMIT="9739751f93dc7893cb99715ae17806f6cce0ce10" # git prepatched 0.16.2
 KEYWORDS=""
 EGIT_SUBMODULES=()
 
