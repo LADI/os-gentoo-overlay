@@ -11,15 +11,15 @@ HOMEPAGE="https://gitea.ladish.org/LADI/patchmatrix"
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://gitea.ladish.org/LADI/patchmatrix"
 	EGIT_BRANCH=ladi
-elif [[ ${PF} == ladi-patchmatrix-0.56.1-r2 ]] ; then
+elif [[ ${PF} == ladi-patchmatrix-0.56.2 ]] ; then
 #	MY_P="${P}-gXXXXXXX" # maj.min.patch
 #	SRC_URI="https://dl.ladish.org/ladi-patchmatrix/${MY_P}.tar.xz"
 #	S="${WORKDIR}/${MY_P}"
 
 	EGIT_REPO_URI="https://gitea.ladish.org/LADI/patchmatrix"
 	EGIT_BRANCH=ladi
-	#4ac9d53=0.56.1
-	EGIT_COMMIT=4ac9d53292c378a8babc49c3880ec4a5c5ae6fc4
+	#f076c7719534d3ae6c7e5335e538fbde466768ab=0.56.2
+	EGIT_COMMIT=f076c7719534d3ae6c7e5335e538fbde466768ab
 
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 #elif [[ ${PV} == maj.min.patch-r1 ]] ; then
