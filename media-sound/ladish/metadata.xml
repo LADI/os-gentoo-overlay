@@ -9,4 +9,9 @@
     <name>LADI project, #ladi on libera.chat</name>
     <irc><channel>#ladi</channel><network>libera.chat</network></irc>
   </maintainer>
+  <use>
+    <flag name="a2jmidid">Enable support for ALSA sequencer applications</flag>
+    <flag name="lash">Enable support for LASH applications</flag>
+    <flag name="gtk">Enable build of gladish (GTK2)</flag>
+  </use>
 </pkgmetadata>

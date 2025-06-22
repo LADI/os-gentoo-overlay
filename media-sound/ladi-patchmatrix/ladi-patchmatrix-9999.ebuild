@@ -11,15 +11,15 @@ HOMEPAGE="https://gitea.ladish.org/LADI/patchmatrix"
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://gitea.ladish.org/LADI/patchmatrix"
 	EGIT_BRANCH=ladi
-elif [[ ${PF} == ladi-patchmatrix-0.56.2 ]] ; then
+elif [[ ${PF} == ladi-patchmatrix-0.56.3 ]] ; then
 #	MY_P="${P}-gXXXXXXX" # maj.min.patch
 #	SRC_URI="https://dl.ladish.org/ladi-patchmatrix/${MY_P}.tar.xz"
 #	S="${WORKDIR}/${MY_P}"
 
 	EGIT_REPO_URI="https://gitea.ladish.org/LADI/patchmatrix"
 	EGIT_BRANCH=ladi
-	#f076c7719534d3ae6c7e5335e538fbde466768ab=0.56.2
-	EGIT_COMMIT=f076c7719534d3ae6c7e5335e538fbde466768ab
+#	760705026aed4fa799931085c26b09537bbcbe4b=ladi-patchmatrix-0.56.3
+	EGIT_COMMIT=760705026aed4fa799931085c26b09537bbcbe4b
 
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 #elif [[ ${PV} == maj.min.patch-r1 ]] ; then
@@ -39,5 +39,6 @@ RDEPEND="${PYTHON_DEPS}
 	ladish? ( media-sound/ladish )
 "
 DEPEND="sys-apps/dbus
-	sys-libs/cdbus
-	media-libs/libglvnd[X]"
+	sys-libs/cdbus"
+
+DOCS=( README.md NEWS.txt ladi-patchmatrix.png )
