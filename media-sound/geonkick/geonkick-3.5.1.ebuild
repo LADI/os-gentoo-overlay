@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,8 @@ KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 inherit git-r3
 EGIT_REPO_URI="https://github.com/Geonkick-Synthesizer/geonkick"
 EGIT_BRANCH="main"
-EGIT_COMMIT=305a743af6bc762874098619e258c301c52adc5e
+# 8175dd0a37ed0e858ad8b63093ecbf87284eae90 == 3.5.1
+EGIT_COMMIT=8175dd0a37ed0e858ad8b63093ecbf87284eae90
 
 IUSE="+jack +lv2"
 
